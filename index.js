@@ -1271,7 +1271,7 @@ message.channel.sendMessage('**Please Wait Until __Roles__ Are Created **')
 client.on('message', msg => {
 var prefix = "#";
   if(!msg.guild) return;
-    if(!msg.member.hasPermission('ADMINSTRATION')) return message.reply('**⚠ No Permission**');
+    if(!msg.member.hasPermission('MANAGE_ROLES')) return message.reply('**⚠ No Permission**');
     if (msg.content.startsWith('!ceverything')) {
 let ra3d = new Discord.RichEmbed()
 .setColor('RANDOM')
