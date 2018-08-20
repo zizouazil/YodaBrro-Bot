@@ -1081,10 +1081,10 @@ client.on('message', message => {
 });
 client.on("guildMemberAdd", member => {
  member.createDM().then(function (channel) {
- return channel.send(`:rose:  ولكم نورت السيرفر:rose: 
+ return channel.send(`:rose:  Welcome to the Server:rose: 
 :crown:${member}:crown:
 .setImage('https://www.askideas.com/media/13/Beautiful-Wooden-Welcome-Sign.jpg
-انت العضو رقم ${member.guild.memberCount} `) 
+You are Member No. ${member.guild.memberCount} `) 
 }).catch(console.error)
 });
 
