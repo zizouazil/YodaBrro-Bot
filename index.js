@@ -241,6 +241,8 @@ if (message.content === "!help") {
 
 💎!bot 『Bot Informations』
 
+💎 !inv-info 『Information for Invitation 』
+
 💎!date 『To Know what is the Date』
 
 💎!ping 『Bot MS Speed』
