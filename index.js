@@ -259,11 +259,13 @@ if (message.content === "!help") {
 
 👑!rooms 『To know how many Rooms are in the server』
 
-👑!ban 『Give user a Ban』
+👑!mute 『Give user a mute』
 
-👑!kick 『Give user a Kick』
+👑!unmute 『Give user an unmute』
 
 👑!clear 『Clear the Chat with Number』
+
+👑 !mcstats 『Give an informations for MC Server』
 
 👑!edit  『 Edit a Message 』
 
@@ -1086,6 +1088,110 @@ client.on("guildMemberAdd", member => {
 .setImage('https://www.askideas.com/media/13/Beautiful-Wooden-Welcome-Sign.jpg
 You are Member No. ${member.guild.memberCount} `) 
 }).catch(console.error)
+});
+
+client.on('message',async message => {
+var owners = ['441963199462506508','ايدي الاونر2']
+        if(message.content.startsWith("~restart")) {
+         if(!owners.includes(message.author.id)) return;
+            message.channel.send('**Restarting.**').then(msg => {
+                setTimeout(() => {
+                   msg.edit('**Restarting..**');
+                },1000);
+                setTimeout(() => {
+                   msg.edit('**Restarting...**');
+                },2000);
+            });
+            console.log(`${message.author.tag} [ ${message.author.id} ] has restarted the bot.`);
+            console.log(`Restarting..`);
+            setTimeout(() => {
+                client.destroy();
+                client.login('process.env.BOT_TOKEN');
+            },3000);
+        }
+      });
+
+client.on('message', message => {
+  const port = '25565'
+  if(message.content.startsWith('~mcstats')) {
+ const args = message.content.split(" ").slice(1).join(" ")
+    if (!args) return message.channel.send("** Write Server IP . **");
+        let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(`https://api.minetools.eu/favicon/${args}/25565`)
+        .addField("📜 Server NIP",`${args}`,true)
+        .addField("🌐 Server Port",`${port}`)
+        .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
+        .setFooter(`SmartChoice Bot.`)
+                .setTimestamp()
+    message.channel.send(embed)      
+}})
+
+client.on("message", message => {
+    if (message.author.bot) return;
+    
+    let command = message.content.split(" ")[0];
+    
+    if (command === "~mute") {
+          if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** You Have no Permission 'Manage Roles' **").catch(console.error);
+    let user = message.mentions.users.first();
+    let modlog = client.channels.find('name', 'general');
+    let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
+    if (!muteRole) return message.reply("** There is no Mute Role 'Muted' **").catch(console.error);
+    if (message.mentions.users.size < 1) return message.reply('** Mention a User**').catch(console.error);
+    
+    const embed = new Discord.RichEmbed()
+      .setColor(0x00AE86)
+      .setTimestamp()
+      .addField('Usage:', '~mute')
+      .addField('Muted:', `${user.username}#${user.discriminator} (${user.id})`)
+      .addField('By:', `${message.author.username}#${message.author.discriminator}`)
+     
+     if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** You Have no Permission Manage Roles **').catch(console.error);
+   
+    if (message.guild.member(user).roles.has(muteRole.id)) {
+  return message.reply("**:white_check_mark: .. Member Has been Muted**").catch(console.error);
+  } else {
+      message.guild.member(user).addRole(muteRole).then(() => {
+  return message.reply("**:white_check_mark: .. Member Has Been Muted**").catch(console.error);
+  });
+    }
+  
+  };
+  
+});
+
+client.on("message", message => {
+    if (message.author.bot) return;
+    
+    let command = message.content.split(" ")[0];
+    
+    if (command === "~unmute") {
+          if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** You Do Not have 'Manage Roles' Permission **").catch(console.error);
+    let user = message.mentions.users.first();
+    let modlog = client.channels.find('name', 'mute-log');
+    let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
+    if (!muteRole) return message.reply("** You Do Not have 'Muted' Role **").catch(console.error);
+    if (message.mentions.users.size < 1) return message.reply('** Mention a User**').catch(console.error);
+    const embed = new Discord.RichEmbed()
+      .setColor(0x00AE86)
+      .setTimestamp()
+      .addField('Usage:', '~unmute')
+      .addField('Unmuted:', `${user.username}#${user.discriminator} (${user.id})`)
+      .addField('By:', `${message.author.username}#${message.author.discriminator}`)
+  
+    if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('** لا يوجد لدي برمشن Manage Roles **').catch(console.error);
+  
+    if (message.guild.member(user).removeRole(muteRole.id)) {
+  return message.reply("**:white_check_mark: .. The User has been Unmuted **").catch(console.error);
+  } else {
+      message.guild.member(user).removeRole(muteRole).then(() => {
+  return message.reply("**:white_check_mark: .. The User has been Unmuted **").catch(console.error);
+  });
+    }
+  
+  };
+  
 });
 
 client.login(process.env.BOT_TOKEN)
