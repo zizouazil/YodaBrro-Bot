@@ -1092,7 +1092,7 @@ You are Member No. ${member.guild.memberCount} `)
 
 client.on('message',async message => {
 var owners = ['441963199462506508','ايدي الاونر2']
-        if(message.content.startsWith("~restart")) {
+        if(message.content.startsWith("!restart")) {
          if(!owners.includes(message.author.id)) return;
             message.channel.send('**Restarting.**').then(msg => {
                 setTimeout(() => {
@@ -1113,7 +1113,7 @@ var owners = ['441963199462506508','ايدي الاونر2']
 
 client.on('message', message => {
   const port = '25565'
-  if(message.content.startsWith('~mcstats')) {
+  if(message.content.startsWith('!mcstats')) {
  const args = message.content.split(" ").slice(1).join(" ")
     if (!args) return message.channel.send("** Write Server IP . **");
         let embed = new Discord.RichEmbed()
@@ -1132,10 +1132,10 @@ client.on("message", message => {
     
     let command = message.content.split(" ")[0];
     
-    if (command === "~mute") {
+    if (command === "!mute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** You Have no Permission 'Manage Roles' **").catch(console.error);
     let user = message.mentions.users.first();
-    let modlog = client.channels.find('name', 'general');
+    let modlog = client.channels.find('name', 'developers-hangout');
     let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
     if (!muteRole) return message.reply("** There is no Mute Role 'Muted' **").catch(console.error);
     if (message.mentions.users.size < 1) return message.reply('** Mention a User**').catch(console.error);
@@ -1143,7 +1143,7 @@ client.on("message", message => {
     const embed = new Discord.RichEmbed()
       .setColor(0x00AE86)
       .setTimestamp()
-      .addField('Usage:', '~mute')
+      .addField('Usage:', '!mute')
       .addField('Muted:', `${user.username}#${user.discriminator} (${user.id})`)
       .addField('By:', `${message.author.username}#${message.author.discriminator}`)
      
@@ -1166,17 +1166,17 @@ client.on("message", message => {
     
     let command = message.content.split(" ")[0];
     
-    if (command === "~unmute") {
+    if (command === "!unmute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** You Do Not have 'Manage Roles' Permission **").catch(console.error);
     let user = message.mentions.users.first();
-    let modlog = client.channels.find('name', 'mute-log');
+    let modlog = client.channels.find('name', 'developers-hangout');
     let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
     if (!muteRole) return message.reply("** You Do Not have 'Muted' Role **").catch(console.error);
     if (message.mentions.users.size < 1) return message.reply('** Mention a User**').catch(console.error);
     const embed = new Discord.RichEmbed()
       .setColor(0x00AE86)
       .setTimestamp()
-      .addField('Usage:', '~unmute')
+      .addField('Usage:', '!unmute')
       .addField('Unmuted:', `${user.username}#${user.discriminator} (${user.id})`)
       .addField('By:', `${message.author.username}#${message.author.discriminator}`)
   
