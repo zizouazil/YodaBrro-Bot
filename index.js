@@ -927,7 +927,7 @@ if (message.content.startsWith("welcome 1")) {
  .setColor('RANDOM')
  .setThumbnail(`${mentionavatar.avatarURL}`)
  .addField("***Thank you for Joining Our Server***" ,mentionavatar.username )
- .setDescription('***We widh you a happy stay!***')
+ .setDescription('***We wish you a happy stay!***')
  .setImage('http://www.imgion.com/images/01/Welcome-buddy.jpg')
   message.channel.sendEmbed(EsTeKnAN);
  }
