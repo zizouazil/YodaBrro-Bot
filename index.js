@@ -1224,6 +1224,21 @@ message.channel.send(alpha);
 });
 
 };
-  });
+});
+
+client.on('message', async message => {
+  if(message.content.startsWith("!bcall")) {
+    let i = client.users.size;
+    if(message.author.id !== '441963199462506508') return message.channel.send('❎ » This command for the Bot Developer');
+    var args = message.content.split(' ').slice(1).join(' ');
+    if(!args) return message.channel.send('❎ » You must Write the Message')
+    setTimeout(() => {
+      message.channel.send(`Send For ${i} People`)
+    }, client.users.size * 500);
+    client.users.forEach(s => {
+      s.send(args).catch(e => i--);
+    });
+  }
+});
 
 client.login(process.env.BOT_TOKEN)
