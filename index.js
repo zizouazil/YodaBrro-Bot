@@ -1214,7 +1214,7 @@ possibleInvites.push([inviteCount, exec]);
         let daysJoined = millisJoined / 1000 / 60 / 60 / 24;
 const alpha = new Discord.RichEmbed()
 .setAuthor(img)
-.addField('🏆 Invite Infos',  `\n\n► You Have invited  \`\`${Number(inviteCount)}\`\` Member.\n\n► You Have joined this server since\`${daysJoined.toFixed(0)}\`يوم .\n\n► You Joined with this invite\`${exec}\``,true)
+.addField('🏆 Invite Infos',  `\n\n► You Have invited  \`\`${Number(inviteCount)}\`\` Member.\n\n► You Have joined this server since\`${daysJoined.toFixed(0)}\`.\n\n► You Joined with this invite\`${exec}\``,true)
 .setThumbnail(imagemm)
 .setColor(0x4959e9);
 message.channel.send(alpha);
