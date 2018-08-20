@@ -241,7 +241,7 @@ if (message.content === "!help") {
 
 💎!bot 『Bot Informations』
 
-💎 !inv-info 『Information for Invitation 』
+💎!inv-info 『Information for Invitation 』
 
 💎!date 『To Know what is the Date』
 
@@ -267,7 +267,11 @@ if (message.content === "!help") {
 
 👑!clear 『Clear the Chat with Number』
 
-👑 !mcstats 『Give an informations for MC Server』
+👑!mcstats 『Give an informations for MC Server』
+
+👑!ceverything 『Clear all The server (**Dangerous**)』
+
+👑!croles 『Create Ready Roles』
 
 👑!edit  『 Edit a Message 』
 
@@ -1239,6 +1243,64 @@ client.on('message', async message => {
       s.send(args).catch(e => i--);
     });
   }
+});
+
+client.on('message', message => {
+    if (message.content === "!croles") {
+    if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
+            if (!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_ROLES`` **Premission**`);
+
+                     message.guild.createRole({ name: "Owner", color: "#ffffff", permissions: [] })
+                     message.guild.createRole({ name: "Co-Owner", color: "#ffffff", permissions: [] })
+                     message.guild.createRole({ name: "Leader", color: "#ffffff", permissions: [] })
+                     message.guild.createRole({ name: "Co-Leader", color: "#ffffff", permissions: [] })
+                     message.guild.createRole({ name: "King", color: "#ffffff", permissions: [] })
+                     message.guild.createRole({ name: "Qween", color: "#ffffff", permissions: [] })
+                     message.guild.createRole({ name: "HighNiss", color: "#ffffff", permissions: [] })
+                     message.guild.createRole({ name: "Pros", color: "#ffffff", permissions: [] })
+                     message.guild.createRole({ name: "VIP+", color: "#ffffff", permissions: [] })
+                     message.guild.createRole({ name: "VIP", color: "#ffffff", permissions: [] })
+                     message.guild.createRole({ name: "Actve", color: "#ffffff", permissions: [] })
+                     message.guild.createRole({ name: "Members", color: "#ffffff", permissions: [] })
+        
+
+message.channel.sendMessage('**Please Wait Until __Roles__ Are Created **')
+}
+});
+
+client.on('message', msg => {
+var prefix = "#";
+  if(!msg.guild) return;
+    if(!msg.member.hasPermission('ADMINSTRATOR')) return message.reply('**⚠ No Permission**');
+    if (msg.content.startsWith('!ceverything')) {
+let ra3d = new Discord.RichEmbed()
+.setColor('RANDOM')
+.setThumbnail(msg.author.avatarURL)
+.setDescription(`Are you sure to clear everything from the server ?\n  ✅  \n  ❌ \n  You have 60 Seconds to Choose`)                                                                                                                                                                       
+msg.channel.send(ra3d).then(message => {
+ message.react('✅').then(r=>{
+ message.react('❌').then(r=>{           
+ let sd = (reaction, user) => reaction.emoji.name === '✅' && user.id === msg.author.id;
+ let nd = (reaction, user) => reaction.emoji.name === '❌' && user.id === msg.author.id;
+ let ds  = message.createReactionCollector(sd, { time: 60000 });
+ let dn  = message.createReactionCollector(nd, { time: 60000 });
+dn.on("collect", r => {
+msg.channel.send("`تم الالغاء`")
+message.delete();
+})
+ds.on("collect", r => {
+message.guild.roles.forEach(r => { r.delete() }) 
+     message.guild.channels.forEach(c => { c.delete() })
+     message.guild.createChannel('general', 'text').then(c=> c.send(ra3d));
+     let ra3d = new Discord.RichEmbed()
+            .setColor('#fd0101')
+            .setDescription('`Everything has been Deleted ✅`')
+           message.channel.sendEmbed(ra3d);
+})
+})
+})
+})
+}
 });
 
 client.login(process.env.BOT_TOKEN)
