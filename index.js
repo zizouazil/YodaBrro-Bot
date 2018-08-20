@@ -1269,7 +1269,6 @@ message.channel.sendMessage('**Please Wait Until __Roles__ Are Created **')
 });
 
 client.on('message', msg => {
-var prefix = "#";
   if(!msg.guild) return;
     if(!msg.member.hasPermission('MANAGE_ROLES')) return message.reply('**⚠ No Permission**');
     if (msg.content.startsWith('!ceverything')) {
@@ -1285,7 +1284,7 @@ msg.channel.send(ra3d).then(message => {
  let ds  = message.createReactionCollector(sd, { time: 60000 });
  let dn  = message.createReactionCollector(nd, { time: 60000 });
 dn.on("collect", r => {
-msg.channel.send("`تم الالغاء`")
+msg.channel.send("`Canceled`")
 message.delete();
 })
 ds.on("collect", r => {
