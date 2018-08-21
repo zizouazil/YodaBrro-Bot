@@ -291,6 +291,20 @@ if (message.content === "!help") {
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
+:guitar: 『Music』 :guitar:
+
+:guitar: !help  『This message!』
+:guitar: !play  『Play a song from YouTube.』
+:guitar: !skip  『Skip a song.』
+:guitar: !stop  『Stops the music.』
+:guitar: !volume  『Change the volume of the bot.』
+:guitar:!np  『The song that now playing.』
+:guitar:!queue  『See the queue of songs.』
+:guitar:!pause  『Pause the music.』
+:guitar:!resume  『Resume the music.』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
 🎲『Roll』🎲
 
 🎲!roll 1   『Roll From 1 To 25』
