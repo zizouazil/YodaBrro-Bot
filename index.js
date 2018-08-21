@@ -2149,11 +2149,11 @@ client.on('message',message =>{
 client.on('message', async message => {
   let messageArray = message.content.split(' ');
   let args = messageArray.slice(1);
-  if(message.content.startsWith(prefix + "invite")) {
-    if(!args) return message.reply('**حدد اسم دعوة**');
+  if(message.content.startsWith("!inv-inf1")) {
+    if(!args) return message.reply('**Specify Invite Name**');
     message.guild.fetchInvites().then(i => {
       let inv = i.get(args[0]);
-      if(!inv) return message.reply(`**لم اقدر على ايجاد ${args}**`);
+      if(!inv) return message.reply(`**I could not Find ${args}**`);
       var iNv = new Discord.RichEmbed()
       .setAuthor(message.author.username,message.author.avatarURL)
       .setThumbnail(message.author.avatarURL)
@@ -2161,7 +2161,7 @@ client.on('message', async message => {
       .addField('# - Invite Room',inv.channel,true)
       .addField('# - Expire Invite Date',moment(inv.expiresAt).format('YYYY/M/DD:h'),true)
       .addField('# - Invite Created',moment(inv.createdAt).format('YYYY/M/DD:h'),true)
-      .addField('# - Invite Time',moment(inv.maxAge).format('DD **ساعة** h **يوم**'),true)
+      .addField('# - Invite Time',moment(inv.maxAge).format('DD **Hour** h **Day**'),true)
       .addField('# - Uses',inv.uses || inv.maxUses,true)
       message.channel.send(iNv);
     });
