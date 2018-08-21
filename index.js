@@ -2055,59 +2055,32 @@ client.on('guildMemberAdd',async member => {
 });
 });
 
-client.on('message', MEGA => { 
-  var sender = MEGA.author
-  if(!MEGA.guild) return
-  if(!sw[MEGA.guild.id]) sw[MEGA.guild.id] = {
-  onoff: 'Off',
-  ch:    'Welcome',
-  msk:   'Welcome'
-}
-        if(MEGA.content.startsWith(`!set-wlc`)) {        
-        let perms = MEGA.member.hasPermission(`MANAGE_CHANNELS`)
-        if(!perms) return MEGA.channel.send('**You need `Manage Channels` permission**')
-        let args = MEGA.content.split(" ").slice(1)
-        if(!args.join(" ")) return MEGA.reply(`
-  ** ${prefix}set-wlc toggle **
-  ** ${prefix}set-wlc set [Channel Name] **
-  ** ${prefix}set-wlc msg [Welcome MEGA] **`) // ->set-wlc toggle - ->set-wlc set - ->set-wlc msg
-        let state = args[0]
-        if(!state.trim().toLowerCase() == 'toggle' || !state.trim().toLowerCase() == 'set' || !state.trim().toLowerCase() == 'msg' ) return MEGA.reply(`
- ** ${prefix}set-wlc toggle **
- ** ${prefix}set-wlc set [Channel Name] **
- ** ${prefix}set-wlc msg [Welcome MEGA] **`) // ->set-wlc toggle - ->set-wlc set - ->set-wlc msg
-        if(state.trim().toLowerCase() == 'toggle') { 
-        if(sw[MEGA.guild.id].onoff === 'Off') return [MEGA.channel.send(`**Welcome MEGA Is **on** !**`), sw[MEGA.guild.id].onoff = 'On']
-        if(sw[MEGA.guild.id].onoff === 'On')  return [MEGA.channel.send(`**Welcome MEGA Is **off** !**`), sw[MEGA.guild.id].onoff = 'Off']
-}
-        if(state.trim().toLowerCase() == 'set') {
-        let newch = MEGA.content.split(" ").slice(2).join(" ")
-        if(!newch) return MEGA.reply(`${PREFIX}set-wlc set [Channel name]`)
-        if(!MEGA.guild.channels.find(`name`,newch)) return MEGA.reply(`**I Cant Find This Channel.**`)
-            sw[MEGA.guild.id].ch = newch
-            MEGA.channel.send(`**Welcome channel Has Been Changed to ${newch}.**`)
-} 
-        if(state.trim().toLowerCase() == 'msg') {
-        let newmsg = MEGA.content.split(" ").slice(2).join(" ")
-        if(!newmsg) return MEGA.reply(`${PREFIX}set-wlc msg [New MEGA]`)
-            sw[MEGA.guild.id].msk = newmsg
-            MEGA.channel.send(`**Welcome MEGA Has Been Changed to ${newmsg}.**`)
-} 
-}
-        if(MEGA.content === '!set-wlc info') {
-        let perms = MEGA.member.hasPermission(`MANAGE_GUILD`) 
-        if(!perms) return MEGA.reply(`You don't have permissions.`)
-        var embed = new Discord.RichEmbed()
-        .addField(`Welcome MEGA  `, `
-On/Off  : __${sw[MEGA.guild.id].onoff}__
-Channel : __${sw[MEGA.guild.id].ch}__
-MEGA : __${sw[MEGA.guild.id].msk}__`)
-        .setColor(`BLUE`)
-            MEGA.channel.send({embed})
-}
-        fs.writeFile("./setwlc.json", JSON.stringify(sw), (err) => {
-        if (err) console.error(err)
-});
-})
+client.on('message',message =>{
+    var prefix = "$$";
+    if(message.content.startsWith('!topinvites')) {
+  message.guild.fetchInvites().then(i =>{
+  var invites = [];
+   
+  i.forEach(inv =>{
+    var [invs,i]=[{},null];
+     
+    if(inv.maxUses){
+        invs[inv.code] =+ inv.uses+"/"+inv.maxUses;
+    }else{
+        invs[inv.code] =+ inv.uses;
+    }
+        invites.push(`invite: ${inv.url} inviter: ${inv.inviter} \`${invs[inv.code]}\`;`);
+   
+  });
+  var embed = new Discord.RichEmbed()
+  .setColor("#000000")
+  .setDescription(`${invites.join(`\n`)+'\n\n**By:** '+message.author}`)
+  .setThumbnail("https://cdn.discordapp.com/avatars/472224983943217175/4fcb0459f7aab6af86d56d97cf7de54b.png?size=2048")
+           message.channel.send({ embed: embed });
+   
+  });
+   
+    }
+  });
 
 client.login(process.env.BOT_TOKEN)
