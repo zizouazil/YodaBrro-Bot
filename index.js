@@ -294,13 +294,21 @@ if (message.content === "!help") {
 :guitar: 『Music』 :guitar:
 
 :guitar: !help  『This message!』
+
 :guitar: !play  『Play a song from YouTube.』
+
 :guitar: !skip  『Skip a song.』
+
 :guitar: !stop  『Stops the music.』
+
 :guitar: !volume  『Change the volume of the bot.』
+
 :guitar:!np  『The song that now playing.』
+
 :guitar:!queue  『See the queue of songs.』
+
 :guitar:!pause  『Pause the music.』
+
 :guitar:!resume  『Resume the music.』
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
@@ -1563,8 +1571,8 @@ client.on('message', async msg => { // eslint disable line
             ]
           }
         }).then(message =>{message.delete(5000)})
-        } else if(msg.content.startsWith(`${PREFIX}help`)) {
-        console.log(`${msg.author.tag} has been used the ${PREFIX}help command in ${msg.guild.name}`);
+        } else if(msg.content.startsWith(`${PREFIX}nvm`)) {
+        console.log(`${msg.author.tag} has been used the ${PREFIX}nvm command in ${msg.guild.name}`);
 
         msg.channel.send('Please check your direct messages :inbox_tray:').then(message =>{message.delete(5000)})
 
