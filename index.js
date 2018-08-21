@@ -283,17 +283,9 @@ if (message.content === "!help") {
 
 👑!mcstats 『Give an informations for MC Server』
 
-👑!ceverything 『Clear all The server (**Dangerous**)』
-
 👑!croles 『Create Ready Roles』
 
 👑!edit  『 Edit a Message 』
-
-👑!ct  『To Create A Chat Room』
-
-👑!cv  『To Create a Voice Room』
-
-👑!delete  『Delete a channel if it is Chat or Voice』
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
