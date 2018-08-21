@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const Util = require('discord.js');
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 
@@ -8,6 +8,7 @@ const youtube = new YouTube(GOOGLE_API_KEY);
 const PREFIX = '!';
 
 const queue = new Map();
+const client = new Discord.Client({disableEveryone: true});
 
 client.on('ready', () => {
     console.log('?[????????????????????????????????????]?');
