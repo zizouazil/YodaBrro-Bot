@@ -49,7 +49,7 @@ client.on('message', message => {
 
 client.on('message', message => {
   if (message.content === "!roll 3") {
- message.channel.sendMessage(Math.floor(Math.random() * 75));
+ message.channel.sendMessage(Math.floor(Math.random() * 75)); // Test
    }
 });
 
