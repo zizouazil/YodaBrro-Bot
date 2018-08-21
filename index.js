@@ -325,7 +325,7 @@ if (message.content === "!help") {
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
 
-:heavy_plus_sign: 『Extra』
+:heavy_plus_sign: 『Extra』 :heavy_plus_sign:
 
 :heavy_plus_sign:!quran 『Plays Qur'an』
 
@@ -370,8 +370,6 @@ if (message.content === "!help") {
 💎『Support』💎
 
 !invite | Add the Bot
-
-!support| Support Server
 
 Bot Developer | @YodaBrro#4557
 
