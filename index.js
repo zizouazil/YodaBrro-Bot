@@ -1351,7 +1351,7 @@ message.channel.sendMessage('**Channel Was Succsesfluy Created**')
 }
 	if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**') {
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_CHANNELS`` **Premission**`);
-message.guild.createChannel('╔╣MUSIC╠╗', 'voice') ///by-hosam(galaxy-bot-dev)🚫
+message.guild.createChannel('╔╣MUSIC╠╗', 'voice')
 message.guild.createChannel('Talk ◥', 'voice')
 message.guild.createChannel('Talk ◥', 'voice')
 message.guild.createChannel('╔╣Public╠╗', 'voice') ///by-hosam(galaxy-bot-dev)🚫
