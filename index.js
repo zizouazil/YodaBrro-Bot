@@ -1,5 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const YouTube = require('simple-youtube-api');
+const ytdl = require('ytdl-core');
+
+const GOOGLE_API_KEY = 'AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8';
+const youtube = new YouTube(GOOGLE_API_KEY);
+const PREFIX = '!';
+
+const queue = new Map();
 
 client.on('ready', () => {
     console.log('?[????????????????????????????????????]?');
@@ -1302,15 +1310,7 @@ message.guild.roles.forEach(r => { r.delete() })
 }
 });
 
-const YouTube = require('simple-youtube-api');
-const ytdl = require('ytdl-core');
 
-const client = new Client({ disableEveryone: true });
-const GOOGLE_API_KEY = 'AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8';
-const youtube = new YouTube(GOOGLE_API_KEY);
-
-const queue = new Map();
-const PREFIX = '!';
 client.on('warn', console.warn);
 
 client.on('error', console.error);
