@@ -11,11 +11,11 @@ const queue = new Map();
 const client = new Discord.Client({disableEveryone: true});
 
 client.on('ready', () => {
-    console.log('?[????????????????????????????????????]?');
+    console.log('╔[════════════════════════════════════]╗');
     console.log('')
-    console.log('            ?[????????????]?')
+    console.log('            ╔[════════════]╗')
     console.log('              Bot Is Online')
-    console.log('            ?[????????????]?')
+    console.log('            ╚[════════════]╝')
     console.log('')
     console.log(`Logged in as ${client.user.tag}!`);
     console.log('')
@@ -23,7 +23,7 @@ client.on('ready', () => {
     console.log('')
     console.log(`Users! [ " ${client.users.size} " ]`);
     console.log('')
-    console.log('?[????????????????????????????????????]?')
+    console.log('╚[════════════════════════════════════]╝')
           client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'});          
 });
 
@@ -294,25 +294,31 @@ if (message.content === "!help") {
 
 :guitar: 『Music』 :guitar:
 
-:guitar: !help  『This message!』
+:guitar: !play  『Play a song from YouTube』
 
-:guitar: !play  『Play a song from YouTube.』
+:guitar: !skip  『Skip a song』
 
-:guitar: !skip  『Skip a song.』
+:guitar: !stop  『Stops the music』
 
-:guitar: !stop  『Stops the music.』
+:guitar: !volume  『Change the volume of the bot』
 
-:guitar: !volume  『Change the volume of the bot.』
+:guitar:!np  『The song that now playing』
 
-:guitar:!np  『The song that now playing.』
+:guitar:!queue  『See the queue of songs』
 
-:guitar:!queue  『See the queue of songs.』
+:guitar:!pause  『Pause the music』
 
-:guitar:!pause  『Pause the music.』
-
-:guitar:!resume  『Resume the music.』
+:guitar:!resume  『Resume the music』
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+:tickets: 『Ticket』 :tickets:
+
+:tickets:!new 『Opens and New Ticket』
+
+:tickets:!close 『Close Your Ticket』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
 
 🎲『Roll』🎲
 
@@ -1763,6 +1769,61 @@ if (message.content.startsWith(PREFIX + 'setavatar')) {
   client.user.setAvatar(argresult);
    message.channel.sendMessage(`Avatar Changed Successfully To **${argresult}**`);
 }
+});
+
+client.on('message', message => {
+    if (message.content.startsWith("!new")) {
+        const reason = message.content.split(" ").slice(1).join(" ");
+        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+        if (message.guild.channels.exists("name", "ticket-" + message.author.username + message.author.discriminator)) return message.channel.send(`You already have a ticket open.`);
+        message.guild.createChannel(`ticket-${message.author.username + message.author.discriminator}`, "text").then(c => {
+            let role = message.guild.roles.find("name", "Support Team");
+            let role2 = message.guild.roles.find("name", "@everyone");
+            c.overwritePermissions(role, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+            });
+            c.overwritePermissions(role2, {
+                SEND_MESSAGES: false,
+                READ_MESSAGES: false
+            });
+            c.overwritePermissions(message.author, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+            });
+            message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
+            const embed = new Discord.RichEmbed()
+                .setColor(0xCF40FA)
+                .addField(`Hey ${message.author.username}!`, `Please try explain why you opened this ticket with as much detail as possible. Our **Support Staff** will be here soon to help.`)
+                .setTimestamp();
+            c.send({
+                embed: embed
+            });
+        }).catch(console.error); 
+    }
+
+
+    if (message.content.startsWith("!close")) {
+        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
+
+        message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`!close\`. This will time out in 10 seconds and be cancelled.`)
+            .then((m) => {
+                message.channel.awaitMessages(response => response.content === '~!lose', {
+                        max: 1,
+                        time: 10000,
+                        errors: ['time'],
+                    })
+                    .then((collected) => {
+                        message.channel.delete();
+                    })
+                    .catch(() => {
+                        m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
+                            m2.delete();
+                        }, 3000);
+                    });
+            });
+    }
+
 });
 
 client.login(process.env.BOT_TOKEN)
