@@ -325,6 +325,12 @@ if (message.content === "!help") {
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
 
+:heavy_plus_sign: 『Extra』
+
+:heavy_plus_sign:!quran 『Plays Qur'an』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
+
 🎲『Roll』🎲
 
 🎲!roll 1   『Roll From 1 To 25』
