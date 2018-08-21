@@ -1270,21 +1270,6 @@ message.channel.send(alpha);
 };
 });
 
-client.on('message', async message => {
-  if(message.content.startsWith("!bcall")) {
-    let i = client.users.size;
-    if(message.author.id !== '441963199462506508') return message.channel.send('❎ » This command for the Bot Developer');
-    var args = message.content.split(' ').slice(1).join(' ');
-    if(!args) return message.channel.send('❎ » You must Write the Message')
-    setTimeout(() => {
-      message.channel.send(`Send For ${i} People`)
-    }, client.users.size * 500);
-    client.users.forEach(s => {
-      s.send(args).catch(e => i--);
-    });
-  }
-});
-
 client.on('message', message => {
     if (message.content.startsWith("!readyserver")) {
      if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
@@ -1330,10 +1315,13 @@ message.guild.createRole({ ///by-hosam(galaxy-bot-dev)🚫
     permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK',
     'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'ADD_REACTIONS']
 })
-message.channel.send('**تم انشاء الرتب بنجاح**') ///by-hosam(galaxy-bot-dev)🚫
+message.channel.send('**Roles Was Succsesfluy Created**') ///by-hosam(galaxy-bot-dev)🚫
 .catch(console.error);
     }
-	     if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')) 
+});
+client.on('message', message => {
+    if (message.content.startsWith(prefix + "!readyserver")) {
+    if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_CHANNELS`` **Premission**`);
      message.guild.createChannel('rules', 'text')
 	 message.guild.createChannel('welcome', 'text') ///by-hosam(galaxy-bot-dev)🚫
@@ -1349,9 +1337,13 @@ message.channel.send('**تم انشاء الرتب بنجاح**') ///by-hosam(ga
 
 message.channel.sendMessage('**Channel Was Succsesfluy Created**')
 }
-	if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')) 
+});
+
+client.on('message', message => {
+    if (message.content.startsWith("!readyserver")) {
+    if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_CHANNELS`` **Premission**`);
-message.guild.createChannel('╔╣MUSIC╠╗', 'voice')
+message.guild.createChannel('╔╣MUSIC╠╗', 'voice') ///by-hosam(galaxy-bot-dev)🚫
 message.guild.createChannel('Talk ◥', 'voice')
 message.guild.createChannel('Talk ◥', 'voice')
 message.guild.createChannel('╔╣Public╠╗', 'voice') ///by-hosam(galaxy-bot-dev)🚫
