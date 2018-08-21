@@ -1832,7 +1832,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-	if(message.content.startsWith("!quran")) {
+    if(message.content.startsWith('!quran')) {
 		message.delete();
     const voiceChannel = message.member.voiceChannel;
     if (!voiceChannel) return message.reply(`**You Must be in Voice Channel**`);
