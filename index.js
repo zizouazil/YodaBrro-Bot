@@ -2196,4 +2196,58 @@ client.on('message',message =>{
     }
   });
 
+client.on('message', async najzx => {
+    if(najzx.content.startsWith("!croom")) {
+      if(!najzx.member.hasPermission()) return;
+      await najzx.channel.send("Send Room Name").then(e => {
+      let filter = m => m.author.id === najzx.author.id
+      let name = '';
+      let time = '';
+      let type = '';
+      let limit = '';
+   najzx.channel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
+      .then(collected => {
+        name = collected.first().content
+        collected.first().delete()
+  e.edit("Send Room Time in Mintes, No less than 2 minutes |No more than 180 minutes")
+  najzx.channel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
+  .then(co => {
+  if(isNaN(co.first().content)) return najzx.reply("Time in Minutes | Only Numbers");
+  if(co.first().content > 180 || co.first().content < 2) return najzx.channel.send("No less than 2 minutes |No more than 180 minutes")
+    time = co.first().content
+  co.first().delete()
+    e.edit("Send Room Type | text, voice")
+  najzx.channel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
+  .then(col => {
+    type = col.first().content
+  col.first().delete()
+  e.edit("Send how many Members can access to your room")
+  najzx.channel.awaitMessages(filter, { max: 1, time: 20000, errors: ['time'] })
+  .then(coll => {
+    if(isNaN(coll.first().content)) return najzx.reply("Members Only with Numbers");
+      limit = coll.first().content
+  coll.first().delete()
+  
+    e.edit("Room is being Created, Stand By...")
+    najzx.guild.createChannel(name, type).then(c => {
+      c.edit({
+        userLimit: limit
+      })
+      setTimeout(() => {
+        c.delete()
+        najzx.channel.send("Time is Over")
+      }, Math.floor(time*60000))
+      
+    })
+    e.edit("Room Has Been Created")
+  
+  })
+  })
+  })
+  })
+  })
+  
+    }
+  })
+
 client.login(process.env.BOT_TOKEN)
