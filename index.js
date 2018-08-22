@@ -2182,7 +2182,7 @@ client.on('message',message =>{
     }else{
         invs[inv.code] =+ inv.uses;
     }
-        invites.push(`invite: ${inv.url} inviter: ${inv.inviter} \`${invs[inv.code]}\`;`);
+        invites.push(`invite: ${inv.url} inviter: ${inv.inviter} \`${invs[inv.code]}\`.`);
    
   });
   var embed = new Discord.RichEmbed()
@@ -2249,5 +2249,68 @@ client.on('message', async najzx => {
   
     }
   })
+
+client.on("message", message => {
+if (message.content === "!help") {
+       message.react("😘")
+          message.react("😵")
+ const embed = new Discord.RichEmbed() 
+     .setColor("#ffff00")
+     .setThumbnail(message.author.avatarURL)
+     .setDescription(`
+-🚀 Amazing Speed
+-😎 Easy to Use
+-💵 Free  
+-📚 English Bot
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+💎『General Commands』💎
+                       
+💎!croom 『Create Text,Voice Room with Options』
+
+💎!news 『To see the daily updates』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+👑『Admin Commands』👑
+
+👑!readyserver 『Create a Ready server』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+
+
+
+`)
+
+
+message.author.sendEmbed(embed)
+
+}
+});
+
+client.on("message", message => {
+if (message.content === "!news") {
+       message.react("😘")
+          message.react("😵")
+ const embed = new Discord.RichEmbed() 
+     .setColor("#ffff00")
+     .setThumbnail(message.author.avatarURL)
+     .setDescription(`
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+📚!croom 『Create Text,Voice Room with Options』
+
+📚!top 『See the Top Inviters』
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
+
+
+`)
+
+
+message.author.sendEmbed(embed)
+
+}
+});
 
 client.login(process.env.BOT_TOKEN)
