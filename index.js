@@ -2198,7 +2198,7 @@ client.on('message',message =>{
 
 client.on('message', async najzx => {
     if(najzx.content.startsWith("!croom")) {
-      if(!najzx.member.hasPermission('')) return;
+      if(!najzx.member.hasPermission('READ_MESSAGE_HISTORY')) return;
       await najzx.channel.send("Send Room Name").then(e => {
       let filter = m => m.author.id === najzx.author.id
       let name = '';
