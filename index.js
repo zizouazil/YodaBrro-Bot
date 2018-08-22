@@ -2269,7 +2269,7 @@ if (message.content === "!help") {
                        
 💎!croom 『Create Text,Voice Room with Options』
 
-💎!news 『To see the daily updates』
+💎!updates 『To see the daily updates』
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
@@ -2291,7 +2291,7 @@ message.author.sendEmbed(embed)
 });
 
 client.on("message", message => {
-if (message.content === "!news") {
+if (message.content === "!updates") {
        message.react("😘")
           message.react("😵")
  const embed = new Discord.RichEmbed() 
