@@ -2313,4 +2313,20 @@ message.author.sendEmbed(embed)
 }
 });
 
+client.on('message' , message => { 
+    var prefix = 'r';
+    if (message.author.bot) return;
+     if (message.content === "!showservers") {
+       if (message.author.id !== '441963199462506508') return message.reply('** This command for Bot Owner **')
+
+if(!message.channel.guild) return;
+  if(message.content < 1023) return
+  const Embed11 = new Discord.RichEmbed()
+.setAuthor(client.user.username,client.user.avatarURL)
+.setThumbnail(client.user.avatarURL)
+.setDescription(`***Servers Count ${client.guilds.size} \n \n${client.guilds.map(guilds => `- ${guilds.name}`).join('\n')}***`)
+         message.channel.sendEmbed(Embed11)
+    }
+});
+
 client.login(process.env.BOT_TOKEN)
