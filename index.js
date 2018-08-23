@@ -1325,17 +1325,17 @@ client.on('message', message => {
             if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_CHANNELS`` **Premission**`);
      message.guild.createChannel('rules', 'text')
 	 message.guild.createChannel('welcome', 'text') ///by-hosam(galaxy-bot-dev)🚫
-	 message.guild.createChannel('bo7', 'text')
+	 message.guild.createChannel('chat', 'text')
      message.guild.createChannel('youtubers', 'text')
 	 message.guild.createChannel('giveaway', 'text') ///by-hosam(galaxy-bot-dev)🚫
 	 message.guild.createChannel('shop', 'text')
-	 message.guild.createChannel('pic', 'text')
+	 message.guild.createChannel('bot', 'text')
 	 
 
 
      
 
-message.channel.sendMessage('**Channel Was Succsesfluy Created**')
+message.channel.sendMessage('**Channels Was Succsesfluy Created**')
 }
 });
 
