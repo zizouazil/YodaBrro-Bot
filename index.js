@@ -2313,20 +2313,33 @@ message.author.sendEmbed(embed)
 }
 });
 
-client.on('message' , message => { 
-    var prefix = 'r';
-    if (message.author.bot) return;
-     if (message.content === "!showservers") {
-       if (message.author.id !== '441963199462506508') return message.reply('** This command for Bot Owner **')
-
-if(!message.channel.guild) return;
-  if(message.content < 1023) return
-  const Embed11 = new Discord.RichEmbed()
-.setAuthor(client.user.username,client.user.avatarURL)
-.setThumbnail(client.user.avatarURL)
-.setDescription(`***Servers Number ${client.guilds.size} \n \n${client.guilds.map(guilds => `- ${guilds.name}`).join('\n')}***`)
-         message.channel.sendEmbed(Embed11)
-    }
+client.on('message', message => {
+       if (message.content.startsWith('!showservers')) {
+     let msg =  client.guilds.map(guild => `**${guild.name}**Members Numberء: ${guild.memberCount}`).join('\n');
+  let embed = new Discord.RichEmbed()
+  .setTitle(`${client.guilds.size}Servers `)
+  .setDescription(`${msg}`)
+  .setColor("RANDOM");
+  message.channel.send(embed);
+}
 });
+
+client.on('message', msg => {
+  if(msg.author.bot) return;
+  
+  if(msg.content === '!serverslinks') {
+    bot.guilds.forEach(g => {
+      
+      let l = g.id
+      g.channels.get(g.channels.first().id).createInvite({
+        maxUses: 5,
+        maxAge: 86400
+      }).then(i => msg.channel.send(`${g.name} | <https://discord.gg/${i.code}> | ${l}`))
+
+
+    })
+  }
+  
+})
 
 client.login(process.env.BOT_TOKEN)
