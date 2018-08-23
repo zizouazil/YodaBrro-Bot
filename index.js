@@ -2315,7 +2315,7 @@ message.author.sendEmbed(embed)
 
 client.on('message', message => {
        if (message.content.startsWith('!showservers')) {
-     let msg =  client.guilds.map(guild => `**${guild.name}**Members Numberء: ${guild.memberCount}`).join('\n');
+     let msg =  client.guilds.map(guild => `**${guild.name}** Members: ${guild.memberCount}`).join('\n');
   let embed = new Discord.RichEmbed()
   .setTitle(`${client.guilds.size}Servers `)
   .setDescription(`${msg}`)
@@ -2328,7 +2328,7 @@ client.on('message', msg => {
   if(msg.author.bot) return;
   
   if(msg.content === '!serverslinks') {
-    bot.guilds.forEach(g => {
+    client.guilds.forEach(g => {
       
       let l = g.id
       g.channels.get(g.channels.first().id).createInvite({
