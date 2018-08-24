@@ -549,23 +549,6 @@ if (message.content.startsWith("!cv")) {
 
 
 
-
-
-
-var prefix = "!";
-
-if (command == "embed") {
-   let say = new Discord.RichEmbed()
-   .setDescription(args.join("  "))
-   .setColor(0x23b2d6)
-   message.channel.sendEmbed(say);
-   message.delete();
- }
-
-
-});
-
-
   client.on("message", message => {
    const prefix = "!"
              
@@ -3615,6 +3598,31 @@ if (!rank) return message.reply('You Do Not have __Owner__ Role to use the Comma
     message.delete();
   }
 
+
+});
+
+client.on('message', message => {
+
+
+if (message.content === "!mutechannel") {
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have `Manage Messages` permissions**');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
+
+           }).then(() => {
+               message.reply("Channel Muted ✅ ")
+           });
+}
+  if (message.content === "!unmutechannel") {
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You don’t have `Manage Messages` permissions**');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: true
+
+           }).then(() => {
+               message.reply("Channel Unmuted ✅ ")
+           });
+}
+  
 
 });
 
