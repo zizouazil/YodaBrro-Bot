@@ -2539,7 +2539,6 @@ client.on('message',  (message) => {
      * The command was ran with invalid parameters.
      * @fires commandUsage
      */
-    return message.emit('commandUsage', message, this.help);
   }
 
   let punches = [
@@ -2562,5 +2561,16 @@ client.on('message',  (message) => {
   })
         }  
 });
+
+client.on ("guildMemberAdd", member => {
+  
+   var role = member.guild.roles.find ("name", "WN");
+   member.addRole (role);
+  
+})
+
+clint.on ("guildMemberRemove", member => {
+   
+})
 
 client.login(process.env.BOT_TOKEN)
