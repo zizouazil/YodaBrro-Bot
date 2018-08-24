@@ -554,23 +554,6 @@ if (message.content.startsWith("!cv")) {
 
 var prefix = "!";
 
-client.on('message', message => {
- if (message.author.bot) return;
- if (!message.content.startsWith(prefix)) return;
-
- let command = message.content.split(" ")[0];
- command = command.slice(prefix.length);
-
- let args = message.content.split(" ").slice(1);
-
-// !say
- if (command === "say") {
-         message.delete()
-   message.channel.sendMessage(args.join(" ")).catch(console.error);
- }
- 
-
-
 if (command == "embed") {
    let say = new Discord.RichEmbed()
    .setDescription(args.join("  "))
@@ -3612,6 +3595,27 @@ m.removeRole(message.guild.roles.find('name', MRole))
 })
 message.reply('*** Done ✅  ***').then(msg => {msg.delete(10000)});
 }
+});
+
+client.on('message', message => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+
+  let command = message.content.split(" ")[0];
+  command = command.slice(prefix.length);
+
+  let args = message.content.split(" ").slice(1);
+
+
+
+if (command == "say") {
+let rank = message.guild.member(message.author).roles.find('name', 'Owner');
+if (!rank) return message.reply('You Do Not have __Owner__ Role to use the Command')
+  message.channel.send(args.join("  "))
+    message.delete();
+  }
+
+
 });
 
 client.login(process.env.BOT_TOKEN)
