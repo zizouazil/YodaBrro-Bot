@@ -365,7 +365,7 @@ if (message.content === "!help") {
 
 💎『Support』💎
 
-!invite | Add the Bot
+!inv | Add the Bot
 
 Bot Developer | @YodaBrro#4557
 
@@ -842,7 +842,7 @@ client.on("guildCreate", guild => {
  
  
 client.on('ready', () => {
-  client.user.setGame(" !help | !invite ");
+  client.user.setGame(" !help | !inv |By: YodaBrro#4557 ");
 }); 
 
 client.on("message", message => {
@@ -903,7 +903,7 @@ client.on('message', message => {
 
 client.on('message', message => {
  if (true) {
-if (message.content === '!invite') {
+if (message.content === '!inv') {
      message.author.send(' Bot Link |  https://discordapp.com/api/oauth2/authorize?client_id=480067910966968330&permissions=0&scope=bot ').catch(e => console.log(e.stack));
 
    }
