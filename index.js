@@ -13703,14 +13703,26 @@ message.member.addRole(message.guild.roles.find("name", "100"));
 	}
 
 
-  if (message.content === '#color') {
+  if (message.content === '!color') {
       if (!message.channel.guild) return;
     message.channel.sendFile('https://cdn.discordapp.com/attachments/442305546008395787/447014844147826700/36d3ebcb8af4bd420528517d747d5c11.jpg');
   }
 	
 });
 
-client.login('NDQ2NjU2NjgzMDgzODI1MTYy.Dd8NBA.QoRQiLrPQ_DY4An8c-E3NrLsMxQ');
-
+client.on('message', ra3d => {
+            var prefix = "r";
+  if (ra3d.content ===  prefix + 'cc'){
+              if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**'); 
+              ra3d.channel.send("**✅ | يتم عمل الالوان**");
+                  setInterval(function(){})
+                    let count = 0;
+                    let ecount = 0;
+          for(let x = 1; x < 141; x++){
+            ra3d.guild.createRole({name:x,
+              color: 'RANDOM'})
+              }
+            }
+       });
 
 client.login(process.env.BOT_TOKEN)
