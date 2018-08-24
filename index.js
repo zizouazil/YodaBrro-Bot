@@ -2569,8 +2569,31 @@ client.on ("guildMemberAdd", member => {
   
 })
 
-clint.on ("guildMemberRemove", member => {
+client.on ("guildMemberRemove", member => {
    
 })
+
+client.on('message', message => {
+ if (message.content.includes('discord.gg')){      //شيل المسافه
+                     if(!message.channel.guild) return message.reply ('')
+                 if (!message.member.hasPermissions(['MANAGE_MESSAGES'])){
+    message.delete() 
+     var member = message.member
+    
+ 
+       
+          member.ban().then((member) => {
+              message.channel.send("", {embed: {
+              author: {
+              },
+              title: 'For advertising ' + member.displayName + ' Has been Kicked',
+              color: 490101,
+              }
+            });
+        }
+      ) 
+    }
+}
+});
 
 client.login(process.env.BOT_TOKEN)
