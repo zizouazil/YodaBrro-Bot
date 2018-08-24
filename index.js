@@ -2343,38 +2343,55 @@ client.on('message', msg => {
 })
 
 client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {points : 0}
-if (message.content == '!نقاطي'){
- var embed = new RichEmbed()
- .setAuthor(message.author.username,message.author.avatarURL)
- .addField(`نقاطك : ${points[message.author.id].points}`,'By : Xivo',   true)
- .setColor('RANDOM')
- .setFooter('العاب وبس', client.user.avatarURL);
- message.channel.sendEmbed(embed)
-};
-if (message.content == "!فكك") {
- var x = ['ضفدع', 'طيارة', 'رعودي', 'تفكيك', 'تجربة', 'مدرسة', 'معلم' , 'نقاط' , 'اكسيفو' , 'مكوه' , 'هكونا مطاطا' , 'اكسيفو ذا بيست'];
- var x2 = ['ض ف د ع', 'ط ي ا ر ة', 'ر ع و د ي', 'ت ف ك ي ك', 'ت ج ر ب ة', 'م د ر س ة', 'م ع ل م', 'ن ق ا ط', 'ا ك س ي ف و', 'م ك و ه', 'ه ك و ن ا م ط ا ط ا', 'ا ك س ي ف و ذ ا ب ي س ت'];
- var x3 = Math.floor(Math.random()*x.length)
- message.channel.send(`فكك الكلمة الآتية :${x[x3]}, لديك 20 ثانية`).then(msg1=> {
-     var r = message.channel.awaitMessages(msg => msg.content == x2[x3], {
-         maxMatches : 1,
-         time : 20000,
-         errors : ['time']
-     })
- r.catch(() => {
-     return message.channel.send('❌ لقد انتهى الوقت ولم يقم أحد بالأجابة بشكل صحيح')
-             message.channel.sendEmbed(embed)
- })
- r.then(s=> {
-
-     points[message.author.id].points +=1
-     message.channel.send(`✅ لقد قمت بكتابة الجواب الصحيح بالوقت المناسب
-─═════**{نقاطك:${points[message.author.id].points}}**═════─`);
-        message.channel.sendEmbed(embed)
- })
- })
-}
+          let args = message.content.split(' ').slice(1);
+   if(message.content.split(' ')[0] == '!color'){
+           const embedd = new Discord.RichEmbed()
+     .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+   .setDescription(`**لا يوجد لون بهذا الأسم ** :x: `)
+   .setColor(`ff0000`)
+ 
+    if(!isNaN(args) && args.length > 0)
+   
+ 
+if    (!(message.guild.roles.find("name",`${args}`))) return  message.channel.sendEmbed(embedd);
+ 
+ 
+       var a = message.guild.roles.find("name",`${args}`)
+                if(!a)return;
+const embed = new Discord.RichEmbed()
+                   
+     .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+   .setDescription(`**Done , تم تغير لونك . :white_check_mark: **`)
+ 
+   .setColor(`${a.hexColor}`)
+  message.channel.sendEmbed(embed);
+          if (!args)return;
+setInterval(function(){})
+                  let count = 0;
+                  let ecount = 0;
+        for(let x = 1; x < 201; x++){
+           
+            message.member.removeRole(message.guild.roles.find("name",`${x}`))
+         
+            }
+                message.member.addRole(message.guild.roles.find("name",`${args}`));
+       
+           
+    }
 });
+client.on('message', ra3d => {
+ 
+  if (ra3d.content ===  '!cc'){
+              if (!ra3d.member.hasPermission('MANAGE_ROLES')) return ra3d.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**');
+              ra3d.channel.send("**✅ | يتم عمل الالوان**");
+                  setInterval(function(){})
+                    let count = 0;
+                    let ecount = 0;
+          for(let x = 1; x < 141; x++){
+            ra3d.guild.createRole({name:x,
+              color: 'RANDOM'})
+              }
+            }
+       });
 
 client.login(process.env.BOT_TOKEN)
