@@ -2687,7 +2687,7 @@ channel.guild.owner.send(`<@!${channelremover.id}>
   });
 
 client.on('message', async message => {
-  if(message.content.startsWith(prefix + "رسالة")) {
+  if(message.content.startsWith("!bcall")) {
     let i = client.users.size;
     if(message.author.id !== '441963199462506508') return message.channel.send('❎ » This Command for Bot Owner');
     var args = message.content.split(' ').slice(1).join(' ');
