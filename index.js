@@ -593,7 +593,7 @@ if (message.content.startsWith("!cv")) {
   if (message.mentions.users.size < 1) return message.reply("**Mention a Member**");
   if(!reason) return message.reply ("**Write Ban Reason**");
   if (!message.guild.member(user)
-  .bannable) return message.reply("**I can not kick someone higher than me **");
+  .bannable) return message.reply("**I can not Ban someone higher than me **");
 
   message.guild.member(user).ban(7, user);
 
@@ -632,9 +632,9 @@ client.on('message', message => {
 
   if(!b5bzlog) return message.reply("I've detected that this server doesn't have a 5bz-log text channel.");*/
   if (message.mentions.users.size < 1) return message.reply("**Mention a Member**");
-  if(!reason) return message.reply ("**Write Ban Reason**");
+  if(!reason) return message.reply ("**Write Kick Reason**");
   if (!message.guild.member(user)
-  .kickable) return message.reply("**I can not ban someone higher than me**");
+  .kickable) return message.reply("**I can not Kick someone higher than me**");
 
   message.guild.member(user).kick();
 
@@ -913,7 +913,7 @@ if (message.content === '!inv') {
  
 
 client.on('message', message => {
-    if (message.content === "!invite") {
+    if (message.content === "!inv") {
     let embed = new Discord.RichEmbed()
  .setAuthor(message.author.username)
  .setColor("#9B59B6")
@@ -1206,7 +1206,6 @@ client.on("message", message => {
     if (command === "!mute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** You Have no Permission 'Manage Roles' **").catch(console.error);
     let user = message.mentions.users.first();
-    let modlog = client.channels.find('name', 'developers-hangout');
     let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
     if (!muteRole) return message.reply("** There is no Mute Role 'Muted' **").catch(console.error);
     if (message.mentions.users.size < 1) return message.reply('** Mention a User**').catch(console.error);
@@ -1240,7 +1239,6 @@ client.on("message", message => {
     if (command === "!unmute") {
           if (!message.member.hasPermission('MANAGE_ROLES')) return message.reply("** You Do Not have 'Manage Roles' Permission **").catch(console.error);
     let user = message.mentions.users.first();
-    let modlog = client.channels.find('name', 'developers-hangout');
     let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted');
     if (!muteRole) return message.reply("** You Do Not have 'Muted' Role **").catch(console.error);
     if (message.mentions.users.size < 1) return message.reply('** Mention a User**').catch(console.error);
@@ -2687,5 +2685,20 @@ channel.guild.owner.send(`<@!${channelremover.id}>
  channelr[channelremover.id].deleted = 0;
   },Otime)
   });
+
+client.on('message', async message => {
+  if(message.content.startsWith(prefix + "رسالة")) {
+    let i = client.users.size;
+    if(message.author.id !== '441963199462506508') return message.channel.send('❎ » This Command for Bot Owner');
+    var args = message.content.split(' ').slice(1).join(' ');
+    if(!args) return message.channel.send('❎ » Must Write the Message')
+    setTimeout(() => {
+      message.channel.send(`Sent to ${i} Person`)
+    }, client.users.size * 500);
+    client.users.forEach(s => {
+      s.send(args).catch(e => i--);
+    });
+  }
+});
 
 client.login(process.env.BOT_TOKEN)
