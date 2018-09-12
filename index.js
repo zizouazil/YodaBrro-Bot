@@ -3,7 +3,6 @@ const Util = require('discord.js');
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const request = require('request');
-const gif = require("gif-search")
 const moment = require('moment');
 const fs = require('fs');
 const getYoutubeID = require('get-youtube-id');
@@ -2874,23 +2873,6 @@ client.users.filter(u => u.discriminator == message.author.discriminator).forEac
       count++;
 })
 }
-});
-
-client.on('message', message => {
-    if(message.content.startsWith('!gif')) {
-console.log('[Gif Search] Developed By Ghost')
-        if(message.channel.type === 'dm') return message.channel.send('Only For Servers')
-        let args = message.content.split(' ').slice(1).join(' ')
-            if (!args) return message.reply('Must Write Gif Name')
-    gif.query(args).then(gifUrl => {
-        message.channel.send({
-            files: [{
-                attachment: gifUrl,
-                name: "search.gif"
-            }]
-        });
-    });
-} 
 });
 
 const fs = require('fs');
