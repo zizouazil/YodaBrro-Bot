@@ -3,6 +3,7 @@ const Util = require('discord.js');
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const request = require('request');
+const gif = require("gif-search")
 const moment = require('moment');
 const fs = require('fs');
 const getYoutubeID = require('get-youtube-id');
@@ -2830,6 +2831,66 @@ client.on('message', ra3d => {
               color: 'RANDOM'})
               }
             }
-       });
+});
+
+client.on('message', message => {
+if(message.content.startsWith('!discrim') ) {
+     if(!message.channel.guild) return message.reply('** This command only for servers **')
+          var args = message.content.split(" ").slice(1);
+    let sent = 0
+    let count = 1;
+    
+      if(args){
+client.users.filter(u => u.discriminator == args[0]).forEach(u => {
+    if(sent > 4){
+     return
+    }
+    sent = sent + 1
+      message.channel.send(`
+
+      ** ${count}➥ ${u.tag}**
+         
+      `)
+      count++;
+})
+}
+}
+if(message.content ===('!discrim') ) {
+     if(!message.channel.guild) return message.reply('** This command only for servers **')
+  let sent = 0
+    let count = 1;
+          
+
+client.users.filter(u => u.discriminator == message.author.discriminator).forEach(u => {
+    if(sent > 4){
+        return
+    }
+    sent = sent + 1
+      message.channel.send(`
+
+      ** ${count}➥ ${u.tag}**
+         
+      `)
+      count++;
+})
+}
+});
+
+client.on('message', message => {
+    if(message.content.startsWith('!gif')) {
+console.log('[Gif Search] Developed By Ghost')
+        if(message.channel.type === 'dm') return message.channel.send('Only For Servers')
+        let args = message.content.split(' ').slice(1).join(' ')
+            if (!args) return message.reply('Must Write Gif Name')
+    gif.query(args).then(gifUrl => {
+        message.channel.send({
+            files: [{
+                attachment: gifUrl,
+                name: "search.gif"
+            }]
+        });
+    });
+} 
+});
 
 client.login(process.env.BOT_TOKEN)
