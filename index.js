@@ -5,7 +5,6 @@ const ytdl = require('ytdl-core');
 const request = require('request');
 const moment = require('moment');
 const fs = require('fs');
-const db = fs.database();
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
