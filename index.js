@@ -39,7 +39,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
   if (message.content === "!roll 1") {
- message.channel.sendMessage(Math.floor(Math.random() * 25));
+ message.channel.sendMessage(Math.floor(Math.random() * 25)); //ehsgdw
    }
 });
 
