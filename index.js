@@ -3078,4 +3078,220 @@ client.on('message', message => {
   }
 });
 
+client.on('message', message => {
+         if (message.content === "!dt") {
+         if (!message.channel.guild) return message.reply('** This command only for servers **');  
+         var currentTime = new Date(),
+            hours = currentTime.getHours() + 4 ,
+            hours2 = currentTime.getHours() + 3 ,
+            hours3 = currentTime.getHours() + 2 ,
+            hours4 = currentTime.getHours() + 3 ,
+            minutes = currentTime.getMinutes(),
+            seconds = currentTime.getSeconds(),
+            Year = currentTime.getFullYear(),
+            Month = currentTime.getMonth() + 1,
+            Day = currentTime.getDate();
+             var h = hours
+  if(hours > 12) {
+               hours -= 12;
+            } else if(hours == 0) {
+                hours = "12";
+            }  
+             if(hours2 > 12) {
+               hours2 -= 12;
+            } else if(hours2 == 0) {
+                hours2 = "12";
+            
+            }  
+                         if(hours3 > 12) {
+               hours3 -= 12;
+            } else if(hours3 == 0) {
+                hours3 = "12";
+            } 
+            if (minutes < 10) {
+                minutes = '0' + minutes;
+            }
+
+            var suffix = 'Morning';
+            if (hours >= 12) {
+                suffix = 'Evening';
+                hours = hours - 12;
+            }
+            if (hours == 0) {
+                hours = 12;
+            }
+ 
+
+                var Date15= new Discord.RichEmbed()
+                .setThumbnail("https://i.imgur.com/ib3n4Hq.png") 
+                .setTitle( "『Date & Time』")
+                .setColor('RANDOM')
+                .setFooter(message.author.username, message.author.avatarURL)
+                .addField('UAE',
+                "『"+ hours + ":" + minutes +":"+ seconds + "』")
+                 .addField('KSA',
+                "『"+ hours2 + ":" + minutes +":"+ seconds  + "』") 
+                .addField('Egypt',
+                "『"+ hours3 + ":" + minutes +":"+ seconds  + "』") 
+                
+                .addField('Date',
+                "『"+ Day + "-" + Month + "-" + Year +  "』")
+
+                 message.channel.sendEmbed(Date15);
+        }
+    });
+
+var type = [
+    {
+            "type": "ما هي عاصمة المملكة العربية السعودية؟",
+        "answers": ["الرياض"]
+    },
+    {
+            "type": "ما هي عاصمة الامارات العربية المتحدة؟",
+        "answers": ["ابو ظبى"]
+    },
+    {
+            "type": "ما هي عاصمة مملكة البحرين؟",
+        "answers": ["المنامة"]
+    },
+    {
+            "type": "ما هي عاصمة سلطنة عمان؟",
+        "answers": ["مسقط"]
+    },
+    {
+            "type": "ما هي عاصمة قطر؟",
+        "answers": ["الدوحة"]
+    },
+    {
+            "type": "ما هي عاصمة اليمن؟",
+        "answers": ["صنعاء"]
+    },
+    {
+            "type": "ما هي عاصمة لبنان؟",
+        "answers": ["بيروت"]
+    },
+    {
+            "type": "ما هي عاصمة فلسطين؟",
+        "answers": ["القدس"]
+    },
+    {
+            "type": "ما هي عاصمة سوريا؟",
+        "answers": ["دمشق"]
+          },
+    {
+            "type": " ما هي عاصمة العراق؟",
+        "answers": ["بغداد"]
+          },
+    {
+            "type": "ما هي عاصمة جمهورية مصر العربية؟",
+        "answers": ["القاهرة"]
+          },
+    {
+            "type": "ما هي عاصمة تونس؟",
+        "answers": ["تونس"]
+          },
+    {
+            "type": "ما هي عاصمة الصومال؟",
+        "answers": ["مقديشو"]
+          },
+    {
+            "type": "ما هي عاصمة جيبوتي؟",
+        "answers": ["جيبوتى"]
+          },
+    {
+            "type": "ما هي عاصمة جزر القمر؟",
+        "answers": ["مورونى"]
+          },
+    {
+            "type": " ما هي عاصمة تركيا؟",
+        "answers": ["انقرة"]
+          },
+    {
+            "type": "ما هي عاصمة أفغانستان؟",
+        "answers": ["كابول"]
+          },
+    {
+            "type": "ما هي عاصمة روسيا؟",
+        "answers": ["موسكو"]
+          },
+    {
+            "type": "ما هي عاصمة استراليا؟",
+        "answers": ["كانبرا"]
+          },
+    {
+            "type": "ما هي عاصمة النمسا؟",
+        "answers": ["فيينا"]
+          },
+    {
+            "type": "ما هي عاصمة كندا؟",
+        "answers": ["مونتريال"]
+          },
+    {
+            "type": "ما هي عاصمة بوليفيا؟",
+        "answers": ["لاباز"]
+          },
+    {
+            "type": "ما هي عاصمة هولندا؟",
+        "answers": ["امستردام"]
+          }
+    
+];
+ 
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 0,
+  };
+  if(!message.guild) return;
+    let id = message.author.id,prefix="G.";
+    if (spee[id] && (new Date).getTime() - spee[id] < 15*1000) {
+        let r = (new Date).getTime() - spee[id];
+        r = 15*1000 - r;
+    return;
+    }
+    if ( message.content == '!عواصم'){
+       
+        try{
+}catch(e){
+ 
+}
+ 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+ 
+ 
+const item = type[Math.floor(Math.random() * type.length)];
+const filter = response => {  
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**Game is Start now...!**').then(msg => {
+ 
+ const embed = new Discord.RichEmbed()
+ .setColor("0054dd")
+     .setTitle(`**${item.type}**`)
+ .setFooter(`${message.author.tag}`, message.author.avatarURL)
+ 
+ 
+         
+msg.channel.send(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 30000, errors: ['time'] })
+        .then((collected) => {
+                  const sh = new Discord.RichEmbed()
+.setColor("04791c")
+.setDescription('**✅ |Good Job +1P**')
+.setFooter('G.mypoints')
+message.channel.sendEmbed(sh);
+            let won = collected.first().author; // في هذا السطر يقوم الكود بسحب الأي دي الذي قام بالأجابة اولاً
+            points[won.id].points++;
+          })
+          .catch(collected => { // في حال لم يقم أحد بالإجابة
+            message.channel.send(`🔚 |**Time Is End**`);
+          })
+          fs.writeFile("./points.json", JSON.stringify(points), (err) => {
+    if (err) console.error(err)
+          })
+        })
+    })
+    spee[id] = (new Date).getTime()
+}
+});
+
 client.login(process.env.BOT_TOKEN)
