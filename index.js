@@ -2875,7 +2875,6 @@ client.users.filter(u => u.discriminator == message.author.discriminator).forEac
 }
 });
 
-const db = fs.database();
 client.on("message", message => {
         if (message.content === "!setprefix") {
         if (message.author.id !== "274923685985386496" && !message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(`U don't have permission to do that`);
