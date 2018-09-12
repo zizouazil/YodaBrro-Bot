@@ -2294,6 +2294,8 @@ if (message.content === "!help") {
 
 💎!updates 『To see the daily updates』
 
+💎!permissions 『To Know What Permissions You have』
+
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
 👑『Admin Commands』👑
