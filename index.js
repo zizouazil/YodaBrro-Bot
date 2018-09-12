@@ -2412,17 +2412,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**You
 
 });
 
-client.on('message', function(message) {
-    if(message.content.startsWith('!role')) {
-        let guild = message.mentions.members.first();
-                          let ZmA = new Discord.RichEmbed()
-                  .setColor('3fcf24')
-                  .setDescription('**__:white_check_mark: تم إضافة رتبة لك__**')
-        message.member.addRole(message.guild.roles.find('name', 'اسم الرتبه'));
-                    message.channel.send({embed:ZmA});
-    }
-});
-
 client.on('message', message => {
     if (message.content.startsWith("رابط")) {
         
@@ -2473,7 +2462,7 @@ client.on("message", msg => {
 if(msg.content.startsWith ("!id")) {
 if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
 const embed = new Discord.RichEmbed();
-embed.addField(":cloud_tornado:  الاسم", `**[ ${msg.author.username}#${msg.author.discriminator} ]**`, true)
+embed.addField(":cloud_tornado:  Name", `**[ ${msg.author.username}#${msg.author.discriminator} ]**`, true)
    .addField(":id:  ID", `**[ ${msg.author.id} ]**`, true)
    .setColor("RANDOM")
    .setFooter(msg.author.username , msg.author.avatarURL)
