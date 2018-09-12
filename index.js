@@ -5,6 +5,7 @@ const ytdl = require('ytdl-core');
 const request = require('request');
 const moment = require('moment');
 const fs = require('fs');
+const db = fs.database();
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
@@ -2876,7 +2877,7 @@ client.users.filter(u => u.discriminator == message.author.discriminator).forEac
 });
 
 const db = fs.database();
-client.oN("message", message => {
+client.on("message", message => {
         if (message.content === "!setprefix") {
         if (message.author.id !== "274923685985386496" && !message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(`U don't have permission to do that`);
   let args = message.content.split(" ").slice(1);
