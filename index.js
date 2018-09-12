@@ -31,7 +31,7 @@ client.on('ready', () => {
     console.log(`Users! [ " ${client.users.size} " ]`);
     console.log('')
     console.log('╚[════════════════════════════════════]╝')
-          client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'}); //Test         
+          client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'});         
 });
 
 
