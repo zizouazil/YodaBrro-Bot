@@ -2892,89 +2892,34 @@ client.users.filter(u => u.discriminator == message.author.discriminator).forEac
 });
 
 client.on('message', message => {
-         if (message.content === "!dt") {
-         if (!message.channel.guild) return message.reply('** This command only for servers **');  
-         var currentTime = new Date(),
-            hours = currentTime.getHours() + 4 ,
-            hours2 = currentTime.getHours() + 3 ,
-            hours3 = currentTime.getHours() + 2 ,
-            hours4 = currentTime.getHours() + 3 ,
-            minutes = currentTime.getMinutes(),
-            seconds = currentTime.getSeconds(),
-            Year = currentTime.getFullYear(),
-            Month = currentTime.getMonth() + 1,
-            Day = currentTime.getDate();
-             var h = hours
-  if(hours > 12) {
-               hours -= 12;
-            } else if(hours == 0) {
-                hours = "12";
-            }  
-             if(hours2 > 12) {
-               hours2 -= 12;
-            } else if(hours2 == 0) {
-                hours2 = "12";
-            
-            }  
-                         if(hours3 > 12) {
-               hours3 -= 12;
-            } else if(hours3 == 0) {
-                hours3 = "12";
-            } 
-            if (minutes < 10) {
-                minutes = '0' + minutes;
-            }
-
-            var suffix = 'صباحاَ';
-            if (hours >= 12) {
-                suffix = 'مساء';
-                hours = hours - 12;
-            }
-            if (hours == 0) {
-                hours = 12;
-            }
+     let command = message.content.split(" ")[0];
+   command = command.slice(prefix.length);
  
-
-                var Date15= new Discord.RichEmbed()
-                .setThumbnail("https://i.imgur.com/ib3n4Hq.png") 
-                .setTitle( "『التاريخ  والوقت』")
-                .setColor('RANDOM')
-                .setFooter(message.author.username, message.author.avatarURL)
-                .addField('الامارات',
-                "『"+ hours + ":" + minutes +":"+ seconds + "』")
-                 .addField('مكه المكرمه',
-                "『"+ hours2 + ":" + minutes +":"+ seconds  + "』") 
-                .addField('مصر',
-                "『"+ hours3 + ":" + minutes +":"+ seconds  + "』") 
-                
-                .addField('Date',
-                "『"+ Day + "-" + Month + "-" + Year +  "』")
-
-                 message.channel.sendEmbed(Date15);
-        }
-});
-
-client.on("message", message => {
-    const command = message.content.split(" ")[0];
-    const args = message.content.split(" ").slice();
-  let container = message.content.split(" ");
-  let result =  Number(container[1]) + Number(container[3]);
-  let result2 = Number(container[1]) - Number(container[3]);
-  let result3 = Number(container[1]) * Number(container[3]);
-  let result4 = Number(container[1]) / Number(container[3]);
-  if(command === "!calculate"){
-if(!args[3]) return;
-if(!args[2]) return;
-    if (container[2] === "+") {
-        message.channel.send("Answer is " + result);
-        } else if (container[2] === "-") {
-          message.channel.send("Answer is " + result2);
-        } else if (container[2] === "*" || container[2].toLowerCase() === "x" || container[2].toLowerCase() === "×") {
-          message.channel.send("Answer is " + result3);
-        } else if (container[2] === "/" || container[2].toLowerCase() == "÷") {
-          message.channel.send("Answer is " + result4);
-        }
-        }
-});//.catch(console.error);
+   let args = message.content.split(" ").slice(1);
+ 
+ 
+ if(command == "!draw") {
+     var Canvas = require('canvas')
+   , Image = new Canvas.Image
+   , canvas = new Canvas(450, 170)
+   , ctx = canvas.getContext('2d');
+   ctx.font = '30px Impact';
+   let args = message.content.split(" ").slice(1);
+   
+ Image.src = canvas.toBuffer();
+ 
+     console.log(Image);
+ ctx.drawImage(Image, 0, 0, Image.width / 470, Image.height / 170);
+ ctx.fillText(args.join("  "),110, 70);
+ 
+ 
+ ctx.beginPath();
+ ctx.lineTo(50, 102);
+ ctx.stroke();
+ 
+ message.channel.sendFile(canvas.toBuffer());
+ }
+ 
+ });
 
 client.login(process.env.BOT_TOKEN)
