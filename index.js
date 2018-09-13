@@ -1994,7 +1994,7 @@ collector2.on('collect', r => {
 		collector5.stop();
 		collector6.stop();
 		collector7.stop();
-		embed.setDescription(`<@${message.author.id}> **Quran is Now On**`);
+		embed.setDescription(`<@${message.author.id}> **Quran is Now On**`); //Hi
 		msg.edit(embed).then(msg.delete(5000));
       });
 });
