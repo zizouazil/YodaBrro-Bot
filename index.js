@@ -5,6 +5,7 @@ const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const request = require('request');
 const moment = require('moment');
+const r1 = require('snekfetch'); 
 const fs = require('fs');
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
@@ -3256,179 +3257,143 @@ Role : __${ar[message.guild.id].role}__`)
 
 });
 
-let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
- 
-    client.on('message', message => {
-const Canvas = require("canvas") // npm i canvas
-const fs = require("fs") // npm i fs
- 
-        let mothed = ['text', 'embed', 'image'];
-        let sets = message.content.split(" ").slice(1).join(" ")
-        let style = message.content.split(" ").slice(2).join(" ")
-        let stym = message.content.split(" ").slice(3).join(" ")
-        let msz = message.content.split(" ").slice(2).join(" ")
-        let ch = message.content.split(" ").slice(2).join(" ")
-        let r = message.content.split(" ").slice(4).join(" ")
- 
- 
-        if(message.content.startsWith("!setWlc")) {
-    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
-            if(!sw[message.guild.id]) sw[message.guild.id] = {
-                cha: "welcome",
-                msz: "Welcome Bro",
-                styler: "text"
-            };
- 
-            if(!sets) {
-                message.channel.send(`**Usage:
-            ${prefix}setWlc style <text, image, embed>
-            ${prefix}setWlc msg <message>
-            ${prefix}setWlc channal <channel name>**`)
-            }
- 
-            if(!mothed) {
-                message.channel.send(`**Usage: ${prefix}setWlc style <text, imgae, embed>**`)
-            }
- 
-            if(message.content === '!setWlc style image') {
-                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
-                sw[message.guild.id].styler = 'image'
-                message.channel.send(`**Your server welcome mothed has been changed to ${sw[message.guild.id].styler}**`)
-            }
- 
-            if(message.content === '!setWlc style embed') {
-                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
-                 sw[message.guild.id].styler = 'embed'
-                message.channel.send(`**Your server welcome mothed has been changed to ${sw[message.guild.id].styler}**`)            }
- 
-            if(message.content === '!setWlc style text') {
-                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
-                 sw[message.guild.id].styler = 'text'
-                message.channel.send(`**Your server welcome mothed has been changed to ${sw[message.guild.id].styler}**`)
-            }
- 
+client.on('message', message => {
+
+if (message.content.startsWith("!profile")) { // الامر
+ let canvas = new Canvas(300, 300) //حجم الصوره الي هتظهر
+ let ctx = canvas.getContext('2d')
+    let Image = Canvas.Image
+    
+   
+                      //  ava.src = buf;
+
+    fs.readFile(__dirname + '/images_profile/profile.png', function(err, picture) { //مكان الصوره 
+      if (err) throw err
+      var img = new Image
+        		var url = message.author.avatarURL; //افتار صورتك
+		url = url.substring(0, url.indexOf('?'));
+
+		r1.get(url).then(res => {
+			var dataURL = res.body.toString('base64');
+			dataURL = 'data:image/png;base64,' + dataURL;
+			img.onload = function() {
+
+				ctx.save();
+    		ctx.beginPath();
+    		ctx.arc(54, 103, 47, 0, Math.PI * 2, true); // احدثيات الدائره
+		    ctx.closePath();
+		    ctx.clip();
+		    ctx.drawImage(img, 8, 57, 92, 92); // الصوره
+		    ctx.restore();
+			}
+			img.src = dataURL;
+		});
+		
+      img.onload = () => {
+        ctx.drawImage(img, 1, 1, 300, 300)
+     //   ctx.drawImage(message.author.avatarURL, 152, 27, 95, 95);
+        ctx.font = "regular 11px Cairo" // نوع الخط وحجمه
+        ctx.fillStyle = "#9f9f9f" // لون الخط
+        ctx.fillText(`${message.author.username}`, 140, 137)
+        ctx.fillText(`${mo}  `, 143, 219) //money
+        ctx.fillText(`${po}`, 120, 202) // النقاط
+
+        //Level
+        ctx.font = "regular 21px Cairo"
+        ctx.fillStyle = "#ffffff"
+        ctx.fillText(`${lev}`, 47, 255) //لفل
+
+        ctx.save()
+        
+      }
+      img.src = picture
+			
+    })
+		
+   
+
+    
+
+    setTimeout(function() {
+      fs.readFile(__dirname + '/images_profile/diamond_prof_bg.png', function(err, picture) {
+        if (err) throw err
+        var img = new Image
+        img.onload = () => {
+          ctx.drawImage(img, -1, -1, 0, 0)
         }
- 
-        if(message.content.startsWith("!setWlc msg")) {
-            if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("**You need `Manage Messages` permission**")
-            if(!msz) {
-                message.channel.send("Usage: <setWlc msg <message>")
-            } else {
-                message.channel.send(`**Your server welcome message has been changed to __${msz}__**`)
-                sw[message.guild.id].msk = msz
-            }
+        img.src = picture
+        let inventoryPicture = canvas.toDataURL()
+        let data = inventoryPicture.replace(/^data:image\/\w+;base64,/, "")
+        let buf = new Buffer(data, 'base64')
+      fs.writeFile(`image.png`, buf)
+      
+        message.channel.send("", {
+          file: `image.png` 
+        })
+      })
+    }, 1000)
+
+
+    function roundedImage(x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+
+    function wrapText(context, text, x, y, maxWidth, lineHeight) {
+
+      var words = text.split(' '),
+        line = '',
+        lineCount = 0,
+        i,
+        test,
+        metrics;
+
+      for (i = 0; i < words.length; i++) {
+        test = words[i];
+        metrics = context.measureText(test);
+        while (metrics.width > maxWidth) {
+
+          test = test.substring(0, test.length - 1);
+          metrics = context.measureText(test);
         }
- 
-        if(message.content.startsWith("!setWlc channel")) {
-            if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
-            if(!ch) {
-                message.channel.send("Usage: <setWlc channel <channel name>")
-            }
-            let chn = message.guild.channels.find("name", ch)
-            if(!chn) {
-                message.channel.send("**I can't find this channel**")
-            }
-            else {
-                 sw[message.guild.id].cha = chn.name
-                 message.channel.send(`**Your server welcome channel has been changed to __${chn.name}__**`)
-                 }
+        if (words[i] != test) {
+          words.splice(i + 1, 0, words[i].substr(test.length))
+          words[i] = test;
         }
- 
-        fs.writeFile('./setWlc.json', JSON.stringify(sw), (err) => {
-if (err) console.error(err);
-})
-})
- 
- 
-client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
- 
-    if(sw[member.guild.id].styler === "text") {
-        channel.sendMessage(`<@${member.user.id}>, ${sw[member.guild.id].msk}`)
+
+        test = line + words[i] + ' ';
+        metrics = context.measureText(test);
+
+        if (metrics.width > maxWidth && i > 0) {
+          context.fillText(line, x, y);
+          line = words[i] + ' ';
+          y += lineHeight;
+          lineCount++;
+        } else {
+          line = test;
+        }
+      }
+
+      ctx.fillText(line, x, y);
     }
- 
-    if(sw[member.guild.id].styler === "embed") {
- 
-        const embed = new Discord.RichEmbed()
-        .setTitle("Member joind.")
-        .setColor("GREEN")
-        .setThumbnail(member.user.avatarURL)
-        .setDescription(`**${sw[member.guild.id].msk}**`)
-        .addField("**Member name**", `[<@${member.user.id}>]`,true)
-        .addField("**Now we are**", `[${member.guild.memberCount}]`,true)
-        channel.sendMessage(`<@${member.user.id}>`)
-        channel.sendEmbed(embed)
-    }
- 
-    if(sw[member.guild.id].styler === "image") {
-        if (member.user.bot) return;
-const w = ['./image.png'];
-        let Image = Canvas.Image,
-            canvas = new Canvas(749, 198),
-            ctx = canvas.getContext('2d');
-        ctx.patternQuality = 'bilinear';
-        ctx.filter = 'bilinear';
-        ctx.antialias = 'subpixel';
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-        ctx.shadowOffsetY = 2;
-        ctx.shadowBlur = 2;
-        ctx.stroke();
-        ctx.beginPath();
- 
-        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
-            if (err) return console.log(err);
-            let BG = Canvas.Image;
-            let ground = new Image;
-            ground.src = Background;
-            ctx.drawImage(ground, 0, 0, 749, 198);
- 
-})
- 
-                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
-                jimp.read(url, (err, ava) => {
-                    if (err) return console.log(err);
-                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-                 if (err) return console.log(err);
- 
-ctx.font = '35px Aeland';
-                        ctx.fontSize = '40px';
-                        ctx.fillStyle = "#FFFFFF";
-                        ctx.textAlign = "center";
-                        ctx.fillText(" Welcome to " + member.guild.name , 440, 25);
- 
-                        //ur name
-                        ctx.font = '40px Impact';
-                        ctx.fontSize = '48px';
-                        ctx.fillStyle = "#FFFFFF";
-                        ctx.textAlign = "center";
-                        ctx.fillText(member.user.username, 420, 100);
- 
-                         ctx.font = '30px Impact';
-                        ctx.fontSize = '20px';
-                        ctx.fillStyle = "#FFFFFF";
-                        ctx.textAlign = "center";
-                        ctx.fillText(sw[member.guild.id].msk, 410, 170);
- 
- 
-                        //Avatar
-                        let Avatar = Canvas.Image;
-                              let ava = new Avatar;
-                              ava.src = buf;
-                              ctx.beginPath();
-                              ctx.arc(115, 100, 90, 0, Math.PI*2);
-                                 ctx.closePath();
-                                 ctx.clip();
-                                 ctx.drawImage(ava, 5, 5, 200, 200);
-                                 channel.sendMessage(`<@${member.user.id}>`)
-        channel.sendFile(canvas.toBuffer())
- 
- 
- 
-})
-})
- 
-    }
- 
-})
+  
+
+
+
+};
+
+
+
+
+});
 
 client.login(process.env.BOT_TOKEN)
