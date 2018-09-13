@@ -3236,28 +3236,19 @@ client.on('message', msg => {
   msg.reply('**Welcome to ${guild.name}**')
 });
 
-client.on('message', message => {
+client.on('message', message => { 
+    if (message.content.startsWith('!emojilist')) {
 
-    if (message.content === "!hide") {
-                        if(!message.channel.guild) return message.reply(' This command only for servers');
+        const List = message.guild.emojis.map(e => e.toString()).join(" ");
 
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
-           message.channel.overwritePermissions(message.guild.id, {
-         READ_MESSAGES: false
-           }).then(() => {
-               message.reply("تم اخفاء الشات✅ ")
+        const EmojiList = new Discord.RichEmbed()
+            .setTitle('➠ Emojis') 
+            .setAuthor(message.guild.name, message.guild.iconURL) 
+            .setColor('RANDOM') 
+            .setDescription(List) 
+            .setFooter(message.guild.name) 
+        message.channel.send(EmojiList) 
+    }
 });
-	    
-client.on('message', message => {
-
-    if (message.content === "!show") {
-                        if(!message.channel.guild) return message.reply(' This command only for servers');
-
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
-           message.channel.overwritePermissions(message.guild.id, {
-         READ_MESSAGES: true
-           }).then(() => {
-               message.reply("تم اظهار الشات✅ ")
-});	    
 
 client.login(process.env.BOT_TOKEN)
