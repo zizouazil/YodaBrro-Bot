@@ -3250,4 +3250,37 @@ client.on('guildCreate', guild => {
       guild.owner.send(embed)
 });
 
+client.on('message', message =>{
+    if (message.author.bot) return;
+    if(message.content == "!serverinv"){
+message.guild.fetchInvites()
+  .then(invites => message.channel.send(`Fetched ${invites.size} invites`))
+  .catch(console.error);
+}
+});
+
+client.on('voiceStateUpdate', (old, now) => {
+  const channel = client.channels.get('ايدي الروم الصوتي');
+  const currentSize = channel.guild.members.filter(m => m.voiceChannel).size;
+  const size = channel.name.match(/\[\s(\d+)\s\]/);
+  if (!size) return channel.setName(`Voice Online: ${currentSize}`);
+  if (currentSize !== size) channel.setName(`Voice Online: ${currentSize}`);
+});
+
+client.on("message", message => {
+        if (message.content === "!setprefix") {
+        if (message.author.id !== "441963199462506508" && !message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(`U don't have permission to do that`);
+  let args = message.content.split(" ").slice(1);
+        let arg = args.join("").substring(message.length)
+        if (!arg) return message.channel.send(`Please add a prefix after command like \`\`${prefix}setprefix &\`\``);
+        fs.database().ref('servers/' + message.guild.id).update({
+            guildname: message.guild.name,
+            guildprefix: arg
+        }).catch(function(err) {
+            message.channel.send(err + "\n\n\n");
+        });
+        message.channel.send(`prefix updated ${arg} for ${message.guild.name}`);
+    }
+});
+
 client.login(process.env.BOT_TOKEN)
