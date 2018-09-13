@@ -3267,7 +3267,7 @@ if (message.content.startsWith("!profile")) { // الامر
    
                       //  ava.src = buf;
 
-    fs.readFile(__dirname + '/profile.png', function(err, picture) { //مكان الصوره 
+    fs.readFile('/profile.png', function(err, picture) { //مكان الصوره 
       if (err) throw err
       var img = new Image
         		var url = message.author.avatarURL; //افتار صورتك
@@ -3315,7 +3315,7 @@ if (message.content.startsWith("!profile")) { // الامر
     
 
     setTimeout(function() {
-      fs.readFile(__dirname + '/profile.png', function(err, picture) {
+      fs.readFile('/profile.png', function(err, picture) {
         if (err) throw err
         var img = new Image
         img.onload = () => {
@@ -3325,10 +3325,10 @@ if (message.content.startsWith("!profile")) { // الامر
         let inventoryPicture = canvas.toDataURL()
         let data = inventoryPicture.replace(/^data:image\/\w+;base64,/, "")
         let buf = new Buffer(data, 'base64')
-      fs.writeFile(`image.png`, buf)
+      fs.writeFile(`profile.png`, buf)
       
         message.channel.send("", {
-          file: `image.png` 
+          file: `profile.png` 
         })
       })
     }, 1000)
