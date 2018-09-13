@@ -879,7 +879,7 @@ client.on('guildMemberAdd', member => {
 client.on('message', message => {
  if (true) {
 if (message.content === '!support') {
-     message.author.send(' |https://discord.gg/4EZkSjQ| For any Problem').catch(e => console.log(e.stack));
+     message.author.send(' |https://discord.gg/vumJWpv| For any Problem').catch(e => console.log(e.stack));
 
    }
   } 
@@ -2600,7 +2600,7 @@ console.log(error)
 });
  let channelc = {};
   client.on('channelCreate', async (channel) => {
-  const rebellog = client.channels.find("name", "log"),
+  const rebellog = client.channels.find("name", "logs"),
   Oguild = channel.guild,
   Onumber = 3,
   Otime = 10000;
