@@ -3237,7 +3237,7 @@ client.on('message', msg => {
 });
 
 client.on('message', message => { 
-    if (message.content.startsWith('!emojilist')) {
+    if (message.content.startsWith('!emojis')) {
 
         const List = message.guild.emojis.map(e => e.toString()).join(" ");
 
