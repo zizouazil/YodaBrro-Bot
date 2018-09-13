@@ -3174,9 +3174,10 @@ client.on('message', msg => {
   msg.reply('olleH')
 });
 
-client.on('message', msg => {
-  if(msg.content === '.')
-  msg.reply('**Welcome to `message.guild.name`**')
+client.on('message', message => {
+    if(message.content === '.'){
+        message.channel.send('Welcome to ${guild.name}')
+    }
 });
 
 client.on('message', message => { 
