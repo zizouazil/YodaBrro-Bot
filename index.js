@@ -734,7 +734,7 @@ client.on('message', message => {
         .addField(':earth_asia: Region',message.guild.region)
         .addField(':ribbon: Server Emojis',`${message.guild.emojis.size}`,true)
         .addField(':construction: Verification Level',`${verificationLevels[message.guild.verificationLevel]}`,true)
-        .addField(':closed_lock_with_key: Roles  '+message.guild.roles.size+' ','Type `.roles` To See The Server Roles!')
+        .addField(':closed_lock_with_key: Roles  '+message.guild.roles.size+' ','Type `!roles` To See The Server Roles!')
         message.channel.send({embed:xNiTRoZ});
     }
    });
