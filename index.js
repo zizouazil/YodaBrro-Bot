@@ -1152,13 +1152,14 @@ client.on('message', message => {
  console.log('[id] Send By: ' + message.author.username)
    }
 });
+
 client.on("guildMemberAdd", member => {
  member.createDM().then(function (channel) {
- return channel.send(`:rose:  Welcome to the Server:rose: 
-:crown:${member}:crown:
-.setImage('https://www.askideas.com/media/13/Beautiful-Wooden-Welcome-Sign.jpg
-You are Member No. ${member.guild.memberCount} `) 
-}).catch(console.error)
+ return channel.send(`:rose: Welcome to the Server :rose: 
+:crown: ${member} :crown:
+        .setImage('https://logos.textgiraffe.com/logos/logo-name/Welcome-designstyle-welcome-m.png
+You are Member No. __${member.guild.memberCount}__ `) 
+ }).catch(console.error)
 });
 
 client.on('message',async message => {
