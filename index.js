@@ -3211,4 +3211,29 @@ client.on('messageReactionRemove', (reaction, user) => {
   reaction.message.guild.members.get(user.id).removeRole(request.role);
 });
 
+client.on('message', msg => {
+  if(msg.content === 'هلا')
+  msg.reply('هلا والله')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'السلام عليكم')
+  msg.reply('وعليكم السلام و رحمة الله و بركاته')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'Hi')
+  msg.reply('Hey')
+});
+
+client.on('message', msg => {
+  if(msg.content === 'Hello')
+  msg.reply('Hey')
+});
+
+client.on('message', msg => {
+  if(msg.content === '.')
+  msg.reply('**Welcome to ${guild.name}**')
+});
+
 client.login(process.env.BOT_TOKEN)
