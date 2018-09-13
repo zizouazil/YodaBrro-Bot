@@ -2192,7 +2192,6 @@ client.on('message', async message => {
 });
 
 client.on('message',message =>{
-    var prefix = "/";
     if(message.content.startsWith('!top')) {
   message.guild.fetchInvites().then(i =>{
   var invites = [];
@@ -2377,7 +2376,7 @@ client.on('message', message => {
 
   let args = message.content.split(" ").slice(1);
 
-  if (command == "!say") {
+  if (command == "say") {
    message.channel.sendMessage(args.join("  "))
    message.delete()
   }
@@ -2394,7 +2393,7 @@ client.on('message', message => {
   
  
 
-if (command == "!embed") {
+if (command == "embed") {
     let say = new Discord.RichEmbed()
     .setDescription(args.join("  "))
     .setColor(0x23b2d6)
@@ -3250,53 +3249,5 @@ client.on('message', message => {
         message.channel.send(EmojiList) 
     }
 });
-
-client.on("roleCreate", rc => {
-  const channel = rc.guild.channels.find("name", "logs") //تقدر تغير اسم الشات
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(rc.guild.name)
-  .setDescription(`***Created Role Name : *** **${rc.name}** `)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
-  
-  client.on("roleDelete",  rd => {
-  const channel = rd.guild.channels.find("name", "logs")
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(rd.guild.name)
-  .setDescription(`***Deleted Role Name : *** **${rd.name}** `)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
-
-client.on("channelCreate",  cc => {
-  const channel = cc.guild.channels.find("name", "logs")
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(cc.guild.name)
-  .setDescription(`***Channel Created Name : *** **${cc.name}** ⬅️`)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
-
-   client.on("deleteChannel",  dc => {
-  const channel = dc.guild.channels.find("name", "logs")
-  if(channel) {
-  var embed = new Discord.RichEmbed()
-  .setTitle(dc.guild.name)
-  .setDescription(`***Channel Deleted Name : *** **${dc.name}** ⬅️`)
-  .setColor(`RANDOM`)
-  .setTimestamp(); 
-  channel.sendEmbed(embed)
-  }
-  });
 
 client.login(process.env.BOT_TOKEN)
