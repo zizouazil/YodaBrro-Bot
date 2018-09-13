@@ -3259,14 +3259,6 @@ message.guild.fetchInvites()
 }
 });
 
-client.on('voiceStateUpdate', (old, now) => {
-  const channel = client.channels.get('ايدي الروم الصوتي');
-  const currentSize = channel.guild.members.filter(m => m.voiceChannel).size;
-  const size = channel.name.match(/\[\s(\d+)\s\]/);
-  if (!size) return channel.setName(`Voice Online: ${currentSize}`);
-  if (currentSize !== size) channel.setName(`Voice Online: ${currentSize}`);
-});
-
 client.on("message", message => {
         if (message.content === "!setprefix") {
         if (message.author.id !== "441963199462506508" && !message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(`U don't have permission to do that`);
