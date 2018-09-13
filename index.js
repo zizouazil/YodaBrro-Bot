@@ -3321,7 +3321,7 @@ if(message.content.startsWith(`!autorole`)) {
 
   if(!perms) return message.reply(`You don't have permissions, required permission : Manage Roles.`)
   let args = message.content.split(" ").slice(1)
-  if(!args.join(" ")) return message.reply(`${prefix}autorle toggle/ set [ROLE NAME]`)
+  if(!args.join(" ")) return message.reply(`${prefix}autorole toggle / set [ROLE NAME]`)
   let state = args[0]
   if(!state.trim().toLowerCase() == 'toggle' || !state.trim().toLowerCase() == 'setrole') return message.reply(`Please type a right state, ${prefix}modlogs toggle/setrole [ROLE NAME]`) 
     if(state.trim().toLowerCase() == 'toggle') { 
@@ -3330,7 +3330,7 @@ if(message.content.startsWith(`!autorole`)) {
     }
    if(state.trim().toLowerCase() == 'set') {
    let newRole = message.content.split(" ").slice(2).join(" ")
-   if(!newRole) return message.reply(`${prefix}autorole setrole [ROLE NAME]`)
+   if(!newRole) return message.reply(`${prefix}autorole set [ROLE NAME]`)
      if(!message.guild.roles.find(`name`,newRole)) return message.reply(`I Cant Find This Role.`)
     ar[message.guild.id].role = newRole
      message.channel.send(`**The AutoRole Has Been Changed to ${newRole}.**`)
