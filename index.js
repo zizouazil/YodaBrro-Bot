@@ -1157,8 +1157,8 @@ client.on("guildMemberAdd", member => {
  member.createDM().then(function (channel) {
  return channel.send(`:rose: Welcome to the Server :rose: 
 :crown: ${member} :crown:
-        .setImage('https://logos.textgiraffe.com/logos/logo-name/Welcome-designstyle-welcome-m.png
-You are Member No. __${member.guild.memberCount}__ `) 
+        .setImage('https://logos.textgiraffe.com/logos/logo-name/Welcome-designstyle-welcome-m.png`)
+        .addField("You are Member No. __${member.guild.memberCount}_`${port}`)
  }).catch(console.error)
 });
 
@@ -1194,7 +1194,7 @@ client.on('message', message => {
         .addField("📜 Server NIP",`${args}`,true)
         .addField("🌐 Server Port",`${port}`)
         .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
-        .setFooter(`SmartChoice Bot.`)
+        .setFooter(`Heem Bot.`)
                 .setTimestamp()
     message.channel.send(embed)      
 }})
