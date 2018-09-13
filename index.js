@@ -851,7 +851,7 @@ client.on("message", message => {
            if (message.content.startsWith(prefix + "clear")) {
 if (!args[1]) {
                                let x5bz1 = new Discord.RichEmbed()
-                               .setDescription("-clear <number>")
+                               .setDescription("!clear <number>")
                                .setColor("#0000FF")
                                message.channel.sendEmbed(x5bz1);
                            } else {
@@ -3227,7 +3227,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
   if(msg.content === 'Hello')
-  msg.reply('Hey')
+  msg.reply('olleH')
 });
 
 client.on('message', msg => {
