@@ -3176,7 +3176,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
   if(msg.content === '.')
-  msg.reply('**Welcome to `${guild.name}`**')
+  msg.reply('**Welcome to `${message.guild.name}`**')
 });
 
 client.on('message', message => { 
