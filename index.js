@@ -18,7 +18,7 @@ const queue = new Map();
 const client = new Discord.Client({disableEveryone: true});
 
 client.on('ready', () => {
-    console.log('╔[════════════════════════════════════]╗');
+    console.log('╔[════════════════════════════════════]╗'); // Heeeeeemo
     console.log('')
     console.log('            ╔[════════════]╗')
     console.log('              Bot Is Online')
