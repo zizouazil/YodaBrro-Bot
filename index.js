@@ -3257,143 +3257,92 @@ Role : __${ar[message.guild.id].role}__`)
 
 });
 
-client.on('message', message => {
+client.on('message',async message => {
+  var time = moment().format('Do MMMM YYYY , hh:mm');
+  var room;
+  var title;
+  var duration;
+  var gMembers;
+  var currentTime = new Date(),
+hours = currentTime.getHours() + 3 ,
+minutes = currentTime.getMinutes(),
+done = currentTime.getMinutes() + duration / 60000 ,
+seconds = currentTime.getSeconds();
+if (minutes < 10) {
+minutes = "0" + minutes;
+}
+var suffix = "AM";
+if (hours >= 12) {
+suffix = "PM";
+hours = hours - 12;
+}
+if (hours == 0) {
+hours = 12;
+}
 
-if (message.content.startsWith("!profile")) { // الامر
- let canvas = new Canvas(300, 300) //حجم الصوره الي هتظهر
- let ctx = canvas.getContext('2d')
-    let Image = Canvas.Image
-    
-   
-                      //  ava.src = buf;
+  var filter = m => m.author.id === message.author.id;
+  if(message.content.startsWith("!giveaway")) {
 
-    fs.readFile('/profile.png', function(err, picture) { //مكان الصوره 
-      if (err) throw err
-      var img = new Image
-        		var url = message.author.avatarURL; //افتار صورتك
-		url = url.substring(0, url.indexOf('?'));
-
-		r1.get(url).then(res => {
-			var dataURL = res.body.toString('base64');
-			dataURL = 'data:image/png;base64,' + dataURL;
-			img.onload = function() {
-
-				ctx.save();
-    		ctx.beginPath();
-    		ctx.arc(54, 103, 47, 0, Math.PI * 2, true); // احدثيات الدائره
-		    ctx.closePath();
-		    ctx.clip();
-		    ctx.drawImage(img, 8, 57, 92, 92); // الصوره
-		    ctx.restore();
-			}
-			img.src = dataURL;
-		});
-		
-      img.onload = () => {
-        ctx.drawImage(img, 1, 1, 300, 300)
-     //   ctx.drawImage(message.author.avatarURL, 152, 27, 95, 95);
-        ctx.font = "regular 11px Cairo" // نوع الخط وحجمه
-        ctx.fillStyle = "#9f9f9f" // لون الخط
-        ctx.fillText(`${message.author.username}`, 140, 137)
-        ctx.fillText(`${mo}  `, 143, 219) //money
-        ctx.fillText(`${po}`, 120, 202) // النقاط
-
-        //Level
-        ctx.font = "regular 21px Cairo"
-        ctx.fillStyle = "#ffffff"
-        ctx.fillText(`${lev}`, 47, 255) //لفل
-
-        ctx.save()
-        
-      }
-      img.src = picture
-			
-    })
-		
-   
-
-    
-
-    setTimeout(function() {
-      fs.readFile('/profile.png', function(err, picture) {
-        if (err) throw err
-        var img = new Image
-        img.onload = () => {
-          ctx.drawImage(img, -1, -1, 0, 0)
-        }
-        img.src = picture
-        let inventoryPicture = canvas.toDataURL()
-        let data = inventoryPicture.replace(/^data:image\/\w+;base64,/, "")
-        let buf = new Buffer(data, 'base64')
-      fs.writeFile(`profile.png`, buf)
-      
-        message.channel.send("", {
-          file: `profile.png` 
-        })
-      })
-    }, 1000)
-
-
-    function roundedImage(x, y, width, height, radius) {
-      ctx.beginPath();
-      ctx.moveTo(x + radius, y);
-      ctx.lineTo(x + width - radius, y);
-      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-      ctx.lineTo(x + width, y + height - radius);
-      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-      ctx.lineTo(x + radius, y + height);
-      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-      ctx.lineTo(x, y + radius);
-      ctx.quadraticCurveTo(x, y, x + radius, y);
-      ctx.closePath();
-    }
-
-    function wrapText(context, text, x, y, maxWidth, lineHeight) {
-
-      var words = text.split(' '),
-        line = '',
-        lineCount = 0,
-        i,
-        test,
-        metrics;
-
-      for (i = 0; i < words.length; i++) {
-        test = words[i];
-        metrics = context.measureText(test);
-        while (metrics.width > maxWidth) {
-
-          test = test.substring(0, test.length - 1);
-          metrics = context.measureText(test);
-        }
-        if (words[i] != test) {
-          words.splice(i + 1, 0, words[i].substr(test.length))
-          words[i] = test;
-        }
-
-        test = line + words[i] + ' ';
-        metrics = context.measureText(test);
-
-        if (metrics.width > maxWidth && i > 0) {
-          context.fillText(line, x, y);
-          line = words[i] + ' ';
-          y += lineHeight;
-          lineCount++;
-        } else {
-          line = test;
-        }
-      }
-
-      ctx.fillText(line, x, y);
-    }
-  
-
-
-
-};
-
-
-
-
+    if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
+    message.channel.send(`:eight_pointed_black_star:| **Send Name channel For the Giveaway**`).then(msg => {
+      message.channel.awaitMessages(filter, {
+        max: 1,
+        time: 20000,
+        errors: ['time']
+      }).then(collected => {
+        let room = message.guild.channels.find('name' , collected.first().content);
+        if(!room) return message.channel.send(':heavy_multiplication_x:| **i Found It :(**');
+        room = collected.first().content;
+        collected.first().delete();
+        msg.edit(':eight_pointed_black_star:| **Time For The Giveaway**').then(msg => {
+          message.channel.awaitMessages(filter, {
+            max: 1,
+            time: 20000,
+            errors: ['time']
+          }).then(collected => {
+            if(isNaN(collected.first().content)) return message.channel.send(':heavy_multiplication_x:| **The Time Be Nambers `` Do the Commend Agin``**');
+            duration = collected.first().content * 60000;
+            collected.first().delete();
+            msg.edit(':eight_pointed_black_star:| **Now send The Present **').then(msg => {
+              message.channel.awaitMessages(filter, {
+                max: 1,
+                time: 20000,
+                errors: ['time']
+              }).then(collected => {
+                title = collected.first().content;
+                collected.first().delete();
+                msg.delete();
+                message.delete();
+                try {
+                  let giveEmbed = new Discord.RichEmbed()
+                  .setDescription(`**${title}** \nReact With 🎉 To Enter! \nTime remaining : ${duration / 60000} **Minutes**\n **Created at :** ${hours}:${minutes}:${seconds} ${suffix}`)
+                  .setFooter(message.author.username, message.author.avatarURL);
+                  message.guild.channels.find("name" , room).send(' :heavy_check_mark: **Giveaway Created** :heavy_check_mark:' , {embed: giveEmbed}).then(m => {
+                     let re = m.react('🎉');
+                     setTimeout(() => {
+                       let users = m.reactions.get("🎉").users;
+                       let list = users.array().filter(u => u.id !== m.author.id !== client.user.id);
+                       let gFilter = list[Math.floor(Math.random() * list.length) + 0]
+                       let endEmbed = new Discord.RichEmbed()
+                       .setAuthor(message.author.username, message.author.avatarURL)
+                       .setTitle(title)
+                       .addField('Giveaway Ended !🎉',`Winners : ${gFilter} \nEnded at :`)
+                       .setTimestamp()
+					 m.edit('** 🎉 GIVEAWAY ENDED 🎉**' , {embed: endEmbed});
+					message.guild.channels.find("name" , room).send(`**Congratulations ${gFilter}! You won The \`${title}\`**` , {embed: {}})
+                     },duration);
+                   });
+                } catch(e) {
+                message.channel.send(`:heavy_multiplication_x:| **i Don't Have Prem**`);
+                  console.log(e);
+                }
+              });
+            });
+          });
+        });
+      });
+    });
+  }
 });
 
 client.login(process.env.BOT_TOKEN)
