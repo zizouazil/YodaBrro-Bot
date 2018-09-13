@@ -3176,7 +3176,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
   if(msg.content === '.')
-  msg.reply('**Welcome to ${guild.name}**')
+  msg.reply('**Welcome to `${guild.name}`**')
 });
 
 client.on('message', message => { 
@@ -3192,6 +3192,61 @@ client.on('message', message => {
             .setFooter(message.guild.name) 
         message.channel.send(EmojiList) 
     }
+});
+
+client.on('message', message => {
+    if (message.author.bot) return;
+    if (message.content.indexOf('!un') === 0) {
+        var text = message.content.substring(1);
+        var reversed = '';
+        var i = text.length;
+        while (i > 0) {
+            reversed += text.substring(i - 1, i);
+            i--;
+        }
+        message.reply(reversed);
+    }
+});
+
+client.on('message', message => {
+     if(!message.channel.guild) return;
+                if(message.content.startsWith('!allbots')) {
+
+    
+    if (message.author.bot) return;
+    let i = 1;
+        const botssize = message.guild.members.filter(m=>m.user.bot).map(m=>`${i++} - <@${m.id}>`);
+          const embed = new Discord.RichEmbed()
+          .setAuthor(message.author.tag, message.author.avatarURL)
+          .setDescription(`**Found ${message.guild.members.filter(m=>m.user.bot).size} bots in this Server**
+${botssize.join('\n')}`)
+.setFooter(client.user.username, client.user.avatarURL)
+.setTimestamp();
+message.channel.send(embed)
+
+}
+
+
+});
+
+client.on('message', message => {
+if (message.content.startsWith('!perms')) {
+         if(!message.channel.guild) return;
+         var perms = JSON.stringify(message.channel.permissionsFor(message.author).serialize(), null, 4);
+         var zPeRms = new Discord.RichEmbed()
+         .setColor('RANDOM')
+         .setTitle(':tools: Permissions')
+         .addField('Your Permissions:',perms)
+                  message.channel.send({embed:zPeRms});
+
+    }
+});
+
+client.on('guildCreate', guild => {
+  var embed = new Discord.RichEmbed()
+  .setColor(0x5500ff)
+  .setDescription(`**Thank You For Adding Me**`)
+      guild.owner.send(embed)
 });
 
 client.login(process.env.BOT_TOKEN)
