@@ -1345,7 +1345,7 @@ message.channel.send('**Roles Was Succsesfluy Created**') ///by-hosam(galaxy-bot
 client.on('message', message => {
     if (message.content.startsWith("!readyserver")) {
     if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
-            if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_CHANNELS`` **Premission**`);
+            if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`${message.author.username} You Dont Have ``MANAGE_CHANNELS`` **Premission**`);
      message.guild.createChannel('rules', 'text')
 	 message.guild.createChannel('welcome', 'text') ///by-hosam(galaxy-bot-dev)🚫
 	 message.guild.createChannel('chat', 'text')
