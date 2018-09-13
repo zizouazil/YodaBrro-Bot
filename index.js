@@ -1153,15 +1153,6 @@ client.on('message', message => {
    }
 });
 
-client.on("guildMemberAdd", member => {
- member.createDM().then(function (channel) {
- return channel.send(`:rose: Welcome to the Server :rose: 
-:crown: ${member} :crown:
-        .setImage('https://logos.textgiraffe.com/logos/logo-name/Welcome-designstyle-welcome-m.png`)
-        .addField("You are Member No. __${member.guild.memberCount}_`${port}`)
- }).catch(console.error)
-});
-
 client.on('message',async message => {
 var owners = ['441963199462506508','ايدي الاونر2']
         if(message.content.startsWith("!restart")) {
