@@ -3283,21 +3283,4 @@ client.on("message", message => {
     }
 });
 
-client.on('message',async Epic => {
-  if(Epic.content.startsWith("!vonline")) {
-  if(!Epic.guild.member(Epic.author).hasPermissions('MANAGE_CHANNELS')) return Epic.reply(':x: **You Dont have the Permission**');
-  if(!Epic.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return Epic.reply(':x: **I dont have Permission**');
-  Epic.guild.createChannel(`Voice Online : [ ${Epic.guild.members.filter(m => m.voiceChannel).size} ]` , 'voice').then(c => {
-    console.log(`Voice Online Is Activation In ${Epic.guild.name}`);
-    c.overwritePermissions(Epic.guild.id, {
-      CONNECT: false,
-      SPEAK: false
-    });
-    setInterval(() => {
-      c.setName(` Online :  ${Epic.guild.members.filter(m => m.voiceChannel).size} .`)
-    },1000);
-  });
-  }
-});
-
 client.login(process.env.BOT_TOKEN)
