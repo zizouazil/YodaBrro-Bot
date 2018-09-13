@@ -3291,7 +3291,7 @@ hours = 12;
         errors: ['time']
       }).then(collected => {
         let room = message.guild.channels.find('name' , collected.first().content);
-        if(!room) return message.channel.send(':heavy_multiplication_x:| **i Found It :(**');
+        if(!room) return message.channel.send(':heavy_multiplication_x:| **i Didnt Found It :(**');
         room = collected.first().content;
         collected.first().delete();
         msg.edit(':eight_pointed_black_star:| **Time For The Giveaway**').then(msg => {
