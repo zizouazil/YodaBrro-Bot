@@ -4577,4 +4577,50 @@ ReBeL.guild.roles.filter(rebel => isNaN(rebel)).forEach(codes => codes.delete())
 }
 });
 
+client.on('message', message => {
+
+    if (message.content === "!hide") {
+                        if(!message.channel.guild) return message.reply(' This command only for servers');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' You Dont have Permissions');
+           message.channel.overwritePermissions(message.guild.id, {
+         READ_MESSAGES: false
+           }).then(() => {
+               message.reply("Chat Hided ✅ ")
+	   });
+
+client.on('message', message => {
+
+    if (message.content === "!show") {
+                        if(!message.channel.guild) return message.reply(' This command only for servers');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' You Dont have Permissions');
+           message.channel.overwritePermissions(message.guild.id, {
+         READ_MESSAGES: true
+           }).then(() => {
+               message.reply("Chat Shown✅ ")
+	   });
+	    
+client.on('message', message => {
+    
+    if(message.author.bot) return;
+    if(message.channel.type === 'dm') return;
+    
+    var command = message.content.toLowerCase().split(' ')[0];    
+    if(command == '!guilds') { // الامر: !guilds
+        if(message.member.hasPemrission('ADMINISTRATOR')) return message.channel.send('⛔ | You dont have **ADMINISTRATOR** Permission!');
+        
+        var number = 1;// حقوق الفا كودز && iTzAbOoD
+        
+        let serversInfo = new Discord.RichEmbed()
+        .setAuthor(message.guild.name, message.guild.iconURL)
+        .setDescription(client.guilds.map(g => `${number++}- ${g.name} (ID: ${g.id})`).slice(0, 10).join('\n'))
+        .setColor('GREEN')
+        .setTimestamp()
+        .setFooter(message.author.tag, message.author.avatarURL)
+        
+        message.channel.send(serversInfo);
+    }
+});
+	    
 client.login(process.env.BOT_TOKEN)
