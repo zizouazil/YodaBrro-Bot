@@ -4350,7 +4350,6 @@ var prefix =`!`;
   }
            var Canvas = require('canvas')
 var jimp = require('jimp')
-const snumber = require('short-number')
          sql.get(`SELECT * FROM scores WHERE userId ="${getvalueof.id}"`).then(row => {
 message.channel.startTyping(1)
 const w = ['./img/wall.png'];
@@ -4518,7 +4517,7 @@ const w = ['./img/up1.png','./img/up2.png','./img/up.png'];
     let args = message.content.split(' ').slice(1);
   if (message.content.startsWith('!owner')) {
         if(!message.channel.guild) return message.reply('** This command only for servers**');
-    if(message.author.user !== '441963199462506508' && message.author.id !== '415602689100087297') return message.reply('**This Command Just For Admins**')// :|
+    if(message.author.user !== '441963199462506508' && message.author.id !== '441963199462506508') return message.reply('**This Command Just For Admins**')// :|
     console.log(args[0]);
   client.users.get(args[0]).send(args[1]);
 
