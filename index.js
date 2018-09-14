@@ -3038,7 +3038,7 @@ client.on('message', msg => {
 
 client.on('message', message => {
     if(message.content === '.'){
-        message.channel.send('Welcome to ${guild.name}')
+        message.channel.send('**Welcome to Our Server**')
     }
 });
 
