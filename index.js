@@ -4190,7 +4190,7 @@ message.channel.stopTyping(1)
     }
 
 
- if(message.content.startsWith('!adress')) {
+ if(message.content.startsWith('!address')) {
      if(!message.channel.guild) return message.reply('** This command only for servers**');
         var args = message.content.split(" ").join(" ").slice(8)
         if (!args) return;
@@ -4249,7 +4249,7 @@ var prefix =`!`;
         }
     }
 
-    if(message.content.startsWith(prefix + 'خلفيات')) {
+    if(message.content.startsWith('!backgrounds')) {
         var walls = dataPro[message.author.id].walls;
         for(var wall in walls) {
             console.log(walls[wall]);
@@ -4326,7 +4326,7 @@ var prefix =`!`;
     fs.writeFile('./walls.json', JSON.stringify(dataPro), (err) => {
      if(err) console.log(err.message);
  })
-    if(message.content.startsWith('!profile1')) {
+    if(message.content.startsWith('!profile')) {
          if(!message.channel.guild) return message.reply('** This command only for servers**');
      var ment = message.mentions.users.first();
       var getvalueof;
@@ -4517,7 +4517,7 @@ const w = ['./img/up1.png','./img/up2.png','./img/up.png'];
     let args = message.content.split(' ').slice(1);
   if (message.content.startsWith('!owner')) {
         if(!message.channel.guild) return message.reply('** This command only for servers**');
-    if(message.author.user !== '441963199462506508' && message.author.id !== '441963199462506508') return message.reply('**This Command Just For Admins**')// :|
+    if(message.author.user !== '354716386716811264' && message.author.id !== '299302204437823488') return message.reply('**This Command Just For Admins**')// :|
     console.log(args[0]);
   client.users.get(args[0]).send(args[1]);
 
