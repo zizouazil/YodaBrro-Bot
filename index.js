@@ -4584,7 +4584,7 @@ client.on('message', message => {
     
     var command = message.content.toLowerCase().split(' ')[0];    
     if(command == '!guilds') { // الامر: !guilds
-        if(message.member.hasPemrission('ADMINISTRATOR')) return message.channel.send('⛔ | You dont have **ADMINISTRATOR** Permission!');
+    if (!message.guild.member(client.user).hasPermission('ADMINISTRATOR')) return message.channel.send('⛔ | You dont have **ADMINISTRATOR** Permission!');
         
         var number = 1;// حقوق الفا كودز && iTzAbOoD
         
