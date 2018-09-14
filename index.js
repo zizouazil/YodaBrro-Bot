@@ -4047,25 +4047,6 @@ client.on('message', message => {
  }
  });
 
-const gif = require("gif-search")
-client.on('message', message => {
-    var prefix ="$$"
-    if(message.content.startsWith('!gif')) {
-console.log('[Gif Search] Developed By YodaBrro')
-        if(message.channel.type === 'dm') return message.channel.send('Only For Servers')
-        let args = message.content.split(' ').slice(1).join(' ')
-            if (!args) return message.reply('Write GIF name')
-    gif.query(args).then(gifUrl => {
-        message.channel.send({
-            files: [{
-                attachment: gifUrl,
-                name: "search.gif"
-            }]
-        });
-    });
-}
-});
-
 client.on('message', message => {
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
