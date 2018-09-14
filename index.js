@@ -495,7 +495,14 @@ Bot Developer | YodaBrro#4557
 message.author.sendEmbed(embed)
 
 }
-}); 
+});
+
+client.on('message', message => {
+    if (message.content === "!help") {
+    let embed = new Discord.RichEmbed()
+ .setAuthor(message.author.username)
+ .setColor("RANDOM")
+ .addField(" Done " , " |  Send to PM")
 
 
 client.on('message', message => {
