@@ -3351,4 +3351,12 @@ hours = 12;
   }
 });
 
+client.on('message', message=> {
+    if (message.author.bot) return;
+    if (message.isMentioned(client.user))
+    {
+    message.reply("يا عمي وش تبي\nسوي !help\nمالي فاضيلك اكتبهم هنا");
+    }
+});
+
 client.login(process.env.BOT_TOKEN)
