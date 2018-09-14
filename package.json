@@ -24,6 +24,7 @@
     "fs": "0.0.2",
     "get-youtube-id": "^1.0.0",
     "giphy-api": "1.2.7",
+    "gif-search": "^2.0.1",
     "goo.gl": "0.1.4",
     "google-it": "1.1.1",
     "google-translate-api": "2.3.0",
