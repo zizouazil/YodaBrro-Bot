@@ -4278,4 +4278,17 @@ message.channel.sendFile(canvas.toBuffer())
 
 });
 
+client.on('message', message => {
+	var prefix = "!";
+if (message.content.startsWith(prefix + 'design')) {
+    let args = message.content.split(" ").slice(1);
+if(!args[0]) return message.reply('Write the Word / Sentence You Want to Design');  
+
+    figlet(args.join(" "), (err, data) => {
+              message.channel.send("```" + data + "```")
+           })
+}
+});
+
+
 client.login(process.env.BOT_TOKEN)
