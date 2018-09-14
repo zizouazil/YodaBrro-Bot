@@ -4312,7 +4312,7 @@ client.pointsMonitor = (dateformat, message) => {
   score.points++;
   const curLevel = Math.floor(0.2 * Math.sqrt(score.points));
   if (score.level < curLevel) {
-        message.channel.send(`حظا جيدا <@!${message.author.id}> لقد وصـلت الـى لفل ${curLevel} `);
+        message.channel.send(`Good Luck! <@!${message.author.id}> You Have Reached Level ${curLevel} `);
     score.level = curLevel;
   }
 client.points.set(message.author.id, score);
@@ -4345,7 +4345,7 @@ client.on("message", message => {
 
 });
 client.on("message",  message => {
-    if(message.content.startsWith(prefix + 'ترتيبي')) {
+    if(message.content.startsWith('!myrank')) {
          if(!message.channel.guild) return message.reply('** This command only for servers**');
      var ment = message.mentions.users.first();
       var getvalueof;
@@ -4419,7 +4419,7 @@ message.channel.stopTyping(1)
     }
 
 
- if(message.content.startsWith(prefix + 'العنوان')) {
+ if(message.content.startsWith('!adress')) {
      if(!message.channel.guild) return message.reply('** This command only for servers**');
         var args = message.content.split(" ").join(" ").slice(8)
         if (!args) return;
@@ -4432,7 +4432,7 @@ message.channel.stopTyping(1)
         reps: 'NOT YET',
         repo: 0,
     }
-    if(message.content.startsWith(prefix + 'لايك')) {
+    if(message.content.startsWith('!rep')) {
       if(!message.channel.guild) return;
                     moment.locale('ar');
         let ment = message.mentions.users.first();
@@ -4467,7 +4467,7 @@ client.on("message",  message => {
 
 var prefix =`!`;
   let command = message.content.split(" ")[0];
-      if (command === prefix + "تعيين") {
+      if (command === "choose") {
         if(!args[0]) return message.reply('يجب عليك اختيار رقم الخلفيه')
         if(dataPro[message.author.id].walls[args[0]]) {
         dataPro[message.author.id].ai = true;
@@ -4515,14 +4515,14 @@ var prefix =`!`;
             }
         }
          var prefix=`!`
-    if(message.content.startsWith(prefix + 'شراء')) {
+    if(message.content.startsWith('!buy')) {
         sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
     if (!row) return message.reply("** Pls Try .daily And Try Agin**");
         if (!row) return message.reply("sadly you do not have any points yet!");
         let points = row.points;
         if(!args[0]) {
             let embed = new Discord.RichEmbed()
-.setDescription('**ورقم الخلفية .buy لـشراء خلفية آستخدم آمر  ** ')
+.setDescription('**ورقم الخلفية !buy لـشراء خلفية آستخدم آمر  ** ')
 .addField('Profile starwars','Price : $1000 Number: 1')
 .addField('Profile Sun','Preice: $1800 Number: 2')
 .addField('Profile Tree','Price : $2300 Number: 3')
@@ -4555,7 +4555,7 @@ var prefix =`!`;
     fs.writeFile('./walls.json', JSON.stringify(dataPro), (err) => {
      if(err) console.log(err.message);
  })
-    if(message.content.startsWith(prefix + 'بروفايل')) {
+    if(message.content.startsWith('!profile1')) {
          if(!message.channel.guild) return message.reply('** This command only for servers**');
      var ment = message.mentions.users.first();
       var getvalueof;
@@ -4674,7 +4674,7 @@ message.channel.stopTyping(1)
     }
 
 
-      if(message.content == `${prefix}لفل-اب`) {
+      if(message.content == `${prefix}levelup`) {
 
           try {
              sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
@@ -4745,9 +4745,9 @@ const w = ['./img/up1.png','./img/up2.png','./img/up.png'];
 
     try{
     let args = message.content.split(' ').slice(1);
-  if (message.content.startsWith(prefix + 'OWNER')) {
+  if (message.content.startsWith('!owner')) {
         if(!message.channel.guild) return message.reply('** This command only for servers**');
-    if(message.author.user !== '333239187509870595' && message.author.id !== '415602689100087297') return message.reply('**This Command Just For Admins**')// :|
+    if(message.author.user !== '441963199462506508' && message.author.id !== '415602689100087297') return message.reply('**This Command Just For Admins**')// :|
     console.log(args[0]);
   client.users.get(args[0]).send(args[1]);
 
