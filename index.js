@@ -498,12 +498,17 @@ message.author.sendEmbed(embed)
 });
 
 client.on('message', message => {
-    if (message.content === "!help") {
+    if (message.content === "!helpt") {
     let embed = new Discord.RichEmbed()
  .setAuthor(message.author.username)
  .setColor("RANDOM")
  .addField(" Done " , " |  Send to PM")
-
+    
+    
+    
+ message.channel.sendEmbed(embed);
+   }
+});
 
 client.on('message', message => {
    if (message.content.startsWith("!avatar")) {
