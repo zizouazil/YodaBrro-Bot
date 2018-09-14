@@ -4576,30 +4576,6 @@ if(ReBeL.content.startsWith(prefix + "dc")) {
 ReBeL.guild.roles.filter(rebel => isNaN(rebel)).forEach(codes => codes.delete())
 }
 });
-
-client.on('message', message => {
-
-    if (message.content === "!hide") {
-                        if(!message.channel.guild) return message.reply(' This command only for servers');
-
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' You Dont have Permissions');
-           message.channel.overwritePermissions(message.guild.id, {
-         READ_MESSAGES: false
-           }).then(() => {
-               message.reply("Chat Hided ✅ ")
-	   });
-
-client.on('message', message => {
-
-    if (message.content === "!show") {
-                        if(!message.channel.guild) return message.reply(' This command only for servers');
-
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' You Dont have Permissions');
-           message.channel.overwritePermissions(message.guild.id, {
-         READ_MESSAGES: true
-           }).then(() => {
-               message.reply("Chat Shown✅ ")
-	   });
 	    
 client.on('message', message => {
     
