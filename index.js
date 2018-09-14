@@ -17,7 +17,7 @@ const youtube = new YouTube(GOOGLE_API_KEY);
 const PREFIX = '!';
 
 const queue = new Map();
-const client = new Discord.Client({disableEveryone: true}); //Heeeemo
+const client = new Discord.Client({disableEveryone: true});
 
 client.on('ready', () => {
     console.log('╔[════════════════════════════════════]╗'); // Heeeeeemo
