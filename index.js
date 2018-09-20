@@ -4153,6 +4153,8 @@ client.on('message', message => {
  }
  });
 
+let games = "client" 
+
 client.on("message", message => {
   if (message.author.bot) return;
 	if(!message.channel.guild) return;       
