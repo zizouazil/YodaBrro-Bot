@@ -1172,12 +1172,12 @@ client.on('message',async message => {
 var owners = ['441963199462506508','ايدي الاونر2']
         if(message.content.startsWith("!restart")) {
          if(!owners.includes(message.author.id)) return;
-            message.channel.send('**Restarting.**').then(msg => {
+            message.channel.send('**Restarting Hee**').then(msg => {
                 setTimeout(() => {
-                   msg.edit('**Restarting..**');
+                   msg.edit('**Restarting Heem B**');
                 },1000);
                 setTimeout(() => {
-                   msg.edit('**Restarting...**');
+                   msg.edit('**Restarting Heem Bot**');
                 },2000);
             });
             console.log(`${message.author.tag} [ ${message.author.id} ] has restarted the bot.`);
