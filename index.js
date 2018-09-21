@@ -4704,7 +4704,7 @@ client.on('message',async msg => {
 Year = currentTime.getFullYear(),
 Month = currentTime.getMonth() + 1,
 Dat = currentTime.getDate()
-      time.setName(`Members : ◤ → ${message.guild.memberCount} ← ◢`);
+      time.setName(`Members : ◤ → ${guild.memberCount} ← ◢`);
  },1000);
   });
   }
