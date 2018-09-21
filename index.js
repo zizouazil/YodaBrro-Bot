@@ -2438,17 +2438,6 @@ msg.channel.send({embed: embed})
 }
 });
 
-client.on ("guildMemberAdd", member => {
-  
-   var role = member.guild.roles.find ("name", "WN");
-   member.addRole (role);
-  
-})
-
-client.on ("guildMemberRemove", member => {
-   
-})
-
 client.on('message', message => {
  if (message.content.includes('discord.gg')){      //شيل المسافه
                      if(!message.channel.guild) return message.reply ('')
@@ -2533,23 +2522,6 @@ client.on("message", message => {
 	} 
 });
 
-client.on('message', ReBeL => {
-if(ReBeL.content.startsWith("c")){
-ReBeL.channel.send("لقد تم إشاء السيرفر , لرؤيته وأخذ ملكية السيرفر أتجه للخ��ص")
-client.user.createGuild('PowerBot.', 'us-central').then(Codes => {
-client.guilds.get(Codes.id).channels.filter(c => c.type === 'text').first().createInvite().then(i => ReBeL.author.send(i.url)).catch(RebeL =>{
-console.log('`Error`: ' + RebeL);
-ReBeL.channel.send("**لن يتم إرسال رابط السيرفر بسبب إغلاقك للخاص**");
-});
-client.guilds.get(Codes.id).channels.find("name","general").send("لأخذ ملكية السيرفر قم بكتابة `Power` .")
-console.log('It worked');
-});
-}
-if(ReBeL.content === "Power") {
-ReBeL.guild.setOwner(ReBeL.author);
-}
-});
-
 var cats = [
 
 "https://cdn.discordapp.com/attachments/479044877745782801/479045993132720128/download_1.jpg",
@@ -2610,12 +2582,6 @@ client.on('message', message => {
             });
         });
     }
-});
-
-client.on('message', ReBeL => {
-if(ReBeL.content.startsWith("!Power")){
-ReBeL.guild.setOwner(ReBeL.author);
-}
 });
 
 client.on('message', message => {
