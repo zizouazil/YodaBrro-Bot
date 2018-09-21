@@ -1870,7 +1870,7 @@ if (message.content.startsWith(PREFIX + 'setavatar')) {
 client.on('message', message => {
     if (message.content.startsWith("!new")) {
         const reason = message.content.split(" ").slice(1).join(" ");
-        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+        if (!message.guild.roles.exists("name", "Ticket Bot")) return message.channel.send(`This server doesn't have a \`Ticket Bot\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
         if (message.guild.channels.exists("name", "ticket-" + message.author.username + message.author.discriminator)) return message.channel.send(`You already have a ticket open.`);
         message.guild.createChannel(`ticket-${message.author.username + message.author.discriminator}`, "text").then(c => {
             let role = message.guild.roles.find("name", "Support Team");
@@ -2246,7 +2246,13 @@ if (message.content === "!help") {
 
 💎!giveaway 『To Create a giveaway』
 
-💎!autorole toggle / set [Role Name] 『Make an autorole by toggling it __ON__ with role name or __OFF__』
+💎!autorole set [Role Name] 『To Set The Role』
+
+💎!autorole toggle 『Toggle the Autorole __On__ or __Off__ 』
+
+💎!setusers 『Make a Room For Member Count』
+
+💎If You Want Logs Just Make __Log__ Room
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
@@ -2256,7 +2262,15 @@ if (message.content === "!help") {
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
+:dollarlogo: 『Credits Commands』 :dollarlogo:
 
+:dollar: !daily 『Recieve Your Daily Credits』
+
+:dollar: !credit 『Check How many Credits you have』
+
+:dollar: !trans 『Transfer Money』
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
 
 
 `)
