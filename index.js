@@ -4704,7 +4704,28 @@ client.on('message',async msg => {
 Year = currentTime.getFullYear(),
 Month = currentTime.getMonth() + 1,
 Dat = currentTime.getDate()
-      time.setName(`Members : ◤ → ${guild.members.size} ← ◢`);
+      time.setName(`Members : ◤ → ${guild.members.size} ← ◢`); //setrooms
+ },1000);
+  });
+  }
+ 
+});
+
+client.on('message',async msg => {
+  if(msg.content.startsWith("!//setrooms")) {
+  if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('❌ **You Dont have __Manage Channels__ Permission**');
+  if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **The Bot Doesnt have __Manage Channels__ Permission**');
+  msg.guild.createChannel(`Room is being Created :[]` , 'voice').then(time => {
+    time.overwritePermissions(msg.guild.id, {
+      CONNECT: false,
+      SPEAK: false
+    });
+  setInterval(() => {
+      var currentTime = new Date(),
+Year = currentTime.getFullYear(),
+Month = currentTime.getMonth() + 1,
+Dat = currentTime.getDate()
+      time.setName(`Members : ◤ → ${guild.members.size} ← ◢`); //setrooms
  },1000);
   });
   }
@@ -4712,7 +4733,7 @@ Dat = currentTime.getDate()
 });
 
 client.on('message',async message => {
-    if(message.content.startsWith("!settime")) {
+    if(message.content.startsWith("!setrooms")) {
     if(!message.guild.member(message.author).hasPermission('MANAGE_CHANNELS')) return message.reply('❌ **No Permissions No Command**');
     if(!message.guild.member(client.user).hasPermission(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **I Dont have Perm**');
     message.channel.send('✅| **Room is Successfully Created **');
@@ -4754,7 +4775,7 @@ client.on('message',async message => {
 
   
   client.on('message',async message => {
-    if(message.content.startsWith("!setdate")) {
+    if(message.content.startsWith("!setrooms")) {
         var currentTime = new Date(),
         years = currentTime.getFullYear(),
         month = currentTime.getMonth() + 1,
@@ -4777,7 +4798,7 @@ client.on('message',async message => {
   });
 
 client.on('message',async message => {
-    if(message.content.startsWith("!setdays")) {
+    if(message.content.startsWith("!setrooms")) {
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **No Permissions No Command**');
     if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **I Dont have Permissions**');
     message.channel.send('✅| **Room is Successfully Created**');
