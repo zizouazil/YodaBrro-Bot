@@ -2287,6 +2287,12 @@ if (message.content === "!help") {
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
 
+https://discord.gg/vumJWpv
+
+سيرفر الدعم الفني | Support Server
+
+● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
+
 
 `)
 
