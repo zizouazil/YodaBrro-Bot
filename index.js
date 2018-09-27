@@ -51,7 +51,7 @@ Servers Counter : __${client.guilds.size}__**`)
          .setColor("#f3ae10")
          .addField("New Server!")
          .setFooter('Heem Bot' , client.user.avatarURL)
-           client.channels.get("489708968185167872").send({embed});
+           client.channels.get("489708968185167872").send({embed}); //Sup
 }
  
 );
