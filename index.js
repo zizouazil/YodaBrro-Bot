@@ -37,7 +37,7 @@ client.on('ready', () => {
           client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'});     //Heeeeeemo    
 });
 
-lient.on('guildCreate', guild => {
+client.on('guildCreate', guild => {
    
   client.channels.get("489708968185167872")
 const embed = new Discord.RichEmbed()
