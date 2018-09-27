@@ -791,7 +791,7 @@ client.on('message', message => {
         .addField(':id: Server ID',`${message.guild.id}`,true)
         .addField(':date: Created on',D3 + '.' + M2 + '.' + Y1,true)             
         .addField(':crown: Server Owner',`${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)             
-        .addField(':busts_in_silhouette: Members ' + ` ${message.guild.memberCount} `,'Online '+`[ ${message.guild.members.filter(m=>m.presence.status == 'online','idle','dnd').size} ]`+ ','+'Offline '+`[ ${message.guild.members.filter(m=>m.presence.status == 'offline').size} ]`,true)
+        .addField(':busts_in_silhouette: Members ' + ` [${message.guild.memberCount}] `,'Online '+`[ ${message.guild.members.filter(m=>m.presence.status == 'online','idle','dnd').size} ]`+ ','+'Offline '+`[ ${message.guild.members.filter(m=>m.presence.status == 'offline').size} ]`,true)
         .addField(':speech_balloon: Channels' +' '+message.guild.channels.size+' ',`Text [ ${message.guild.channels.filter(m => m.type === 'text').size} ]`+', '+`Voice [ ${message.guild.channels.filter(m => m.type === 'voice').size} ]`,true)
         .addField(':earth_asia: Region',message.guild.region)
         .addField(':ribbon: Server Emojis',`${message.guild.emojis.size}`,true)
