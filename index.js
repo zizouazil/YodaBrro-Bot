@@ -44,19 +44,19 @@ client.on('message', async message => {
     let lan = '';
     let md = '';
     let br = '';
-    let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+    let chaLan = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
     .then(collected => {
       lan = collected.first().content
       collected.first().delete()
 e.delete();
      message.channel.send('** رائع, الأن قم بكتابة مميزات بوتك ❓**').then(m => {
-let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 .then(co => {
   md = co.first().content
         co.first().delete()
         m.delete();
 message.channel.send('**اخيرا وليس اخرا, قم بكتابة عدد السيرفرات والمستخدمين ❓ **').then(ms => {
-let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
+let br = message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
 .then(col => {
   br = col.first().content
         col.first().delete()
@@ -4222,7 +4222,7 @@ if(message.content.startsWith("!daily")) {
 
   if(profile[message.author.id].lastDaily != moment().format('day')) {
    profile[message.author.id].lastDaily = moment().format('day')
-   profile[message.author.id].credits += 310
+   profile[message.author.id].credits += 99999999
     message.channel.send(`**${message.author.username} you collect your \`310\` :dollar: daily pounds**`)
 } else {
     message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
