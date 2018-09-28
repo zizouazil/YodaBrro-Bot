@@ -4222,7 +4222,7 @@ if(message.content.startsWith("!daily")) {
 
   if(profile[message.author.id].lastDaily != moment().format('day')) {
    profile[message.author.id].lastDaily = moment().format('day')
-   profile[message.author.id].credits += 99999999
+   profile[message.author.id].credits += 310
     message.channel.send(`**${message.author.username} you collect your \`310\` :dollar: daily pounds**`)
 } else {
     message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
