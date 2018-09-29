@@ -1168,7 +1168,7 @@ client.on("guildCreate", guild => {
  
  
 client.on('ready', () => {
-  client.user.setGame(" !help | !inv |By: YodaBrro#4557 ");
+  client.user.setGame(" !help | !inv |By: Heem Playz#7918 ");
 }); 
 
 client.on("message", message => {
