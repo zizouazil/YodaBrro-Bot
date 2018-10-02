@@ -301,7 +301,7 @@ if (err) console.error(err);
 
 client.on('guildCreate', guild => {
    
-  client.channels.get("489708968185167872")
+  client.channels.get("465133615458680865")
 const embed = new Discord.RichEmbed()
    .setAuthor(`بوتك دخل سيرفر جديد مبروك ✅`)
    .setDescription(`**
@@ -319,7 +319,7 @@ Servers Counter : __${client.guilds.size}__**`)
 );
 
 client.on('guildDelete', guild => {
-  client.channels.get("489708968185167872")
+  client.channels.get("465133615458680865")
 const embed = new Discord.RichEmbed()
    .setAuthor(`Nameless Bot left a server ❎`)
    .setDescription(`**
@@ -681,7 +681,7 @@ if (message.content === "!help") {
 
 !inv | Add the Bot
 
-Bot Developer | @YodaBrro#4557
+Bot Developer | @Mr.SOKA
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ● 
 
@@ -1205,7 +1205,7 @@ client.on('guildMemberAdd', member => {
 client.on('message', message => {
  if (true) {
 if (message.content === '!support') {
-     message.author.send(' |https://discord.gg/vumJWpv| For any Problem').catch(e => console.log(e.stack));
+     message.author.send(' |  https://discord.gg/ArGwWfH | For any Problem').catch(e => console.log(e.stack));
 
    }
   } 
@@ -1230,7 +1230,7 @@ client.on('message', message => {
 client.on('message', message => {
  if (true) {
 if (message.content === '!inv') {
-     message.author.send(' Bot Link |  https://discordapp.com/api/oauth2/authorize?client_id=480067910966968330&permissions=0&scope=bot ').catch(e => console.log(e.stack));
+     message.author.send(' Bot Link | https://discordapp.com/api/oauth2/authorize?client_id=464863655003947008&permissions=8&scope=bot ').catch(e => console.log(e.stack));
 
    }
   } 
@@ -1480,7 +1480,7 @@ client.on('message', message => {
 });
 
 client.on('message',async message => {
-var owners = ['441963199462506508','ايدي الاونر2']
+var owners = ['389100615432929290','ايدي الاونر2']
         if(message.content.startsWith("!restart")) {
          if(!owners.includes(message.author.id)) return;
             message.channel.send('**Restarting Hee**').then(msg => {
@@ -2583,7 +2583,7 @@ if (message.content === "!help") {
 
 ● ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ●
 
-https://discord.gg/vumJWpv
+  https://discord.gg/ArGwWfH
 
 سيرفر الدعم الفني | Support Server
 
