@@ -60,6 +60,22 @@ client.on('message', msg => {
 
 client.on('message', msg => {
   if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774155287396352/d100879f7f903cba.jpg?width=400&height=211')
+});
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774153584508936/be88f54b9d6e4388.jpg?width=303&height=300')
+});
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496776147674202114/f0a3efbc264a890f.jpg?width=300&height=300')
+});
+
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
   msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774154171973652/Untitled-1-22ecovered_copy.png?width=400&height=139')
 });
 
