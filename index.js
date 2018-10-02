@@ -37,6 +37,55 @@ client.on('ready', () => {
           client.user.setActivity("By: Mr.SOKA",{type: 'STREAMING'});     //Heeeeeemo    
 });
 
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774152926134282/Rules.png?width=400&height=221')
+});
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774152926134284/RTB_copy.png?width=300&height=300')
+});
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774152926134282/Rules.png?width=400&height=221')
+});
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774153584508940/GH-1.png?width=300&height=300')
+});
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774154171973652/Untitled-1-22ecovered_copy.png?width=400&height=139')
+});
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774154612244486/Untitled-1-Recove22red_copy.png?width=400&height=139')
+});
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774154612244487/WLC.png?width=400&height=102')
+});
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774155287396353/232._.png?width=400&height=195')
+});
+
+
+client.on('message', msg => {
+  if(msg.content === '!تصميم جاك')
+  msg.reply('https://media.discordapp.net/attachments/495670016549715969/496774155728060438/Chat.png?width=400&height=176')
+});
+
+
+
 client.on('message', async message => {
   if(message.content.startsWith("!تقديم")) {
     await message.channel.send("** ❓  حسنا, قم بكتابة ايدي البوت**").then(e => {
