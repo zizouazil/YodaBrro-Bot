@@ -15,7 +15,7 @@ let ar = JSON.parse(fs.readFileSync(`AutoRole.json`, `utf8`))
 
 const GOOGLE_API_KEY = 'AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8';
 const youtube = new YouTube(GOOGLE_API_KEY);
-const PREFIX = 'M';
+const PREFIX = '!';
 
 const queue = new Map();
 const client = new Discord.Client({disableEveryone: true}); //Heeeeeeeeeeeeeemo
@@ -34,7 +34,7 @@ client.on('ready', () => {
     console.log(`Users! [ " ${client.users.size} " ]`);
     console.log('')
     console.log('╚[════════════════════════════════════]╝')
-          client.user.setActivity("By: YodaBrro#4557",{type: 'STREAMING'});     //Heeeeeemo    
+          client.user.setActivity("By: Mr.SOKA",{type: 'STREAMING'});     //Heeeeeemo    
 });
 
 client.on('message', async message => {
