@@ -1276,7 +1276,7 @@ client.on("guildCreate", guild => {
  
  
 client.on('ready', () => {
-  client.user.setGame(" !help | !inv |By: Heem Playz#7918 ");
+  client.user.setGame(" !help|!inv|By: @!  Mr.SOKA ☕ | ᵀᴳ . ");
 }); 
 
 client.on("message", message => {
