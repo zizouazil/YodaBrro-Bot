@@ -5056,7 +5056,7 @@ client.on("ready", () => {
         client.guilds.get("492244973228523520").roles.find("name", "TIGERS ✫").edit({
             color : "RANDOM"
         });
-    }, 3000)
+    }, 30000)
 });
 
 
