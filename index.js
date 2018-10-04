@@ -5051,13 +5051,7 @@ client.on('message',async message => {
     }
   });
 
-client.on("ready", () => {
-    setInterval(function(){
-        client.guilds.get("492244973228523520").roles.find("name", "TIGERS ✫").edit({
-            color : "RANDOM"
-        });
-    }, 30000)
-});
+
 
 
 	    
