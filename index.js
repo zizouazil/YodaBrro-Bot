@@ -5134,11 +5134,11 @@ client.on('message',async message => {
   });
 
 client.on('message', message => {
-    if(!message.channel.guild) return;
+            if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('!bcservers')){
-if(!message.author.id === '389100615432929290') return;
-message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
+if (message.content.startsWith('!!bcall')){
+ if (message.author.id !== '389100615432929290') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+message.channel.sendMessage('جار ارسال الرسالة |✅')
 client.users.forEach(m =>{
 m.sendMessage(args)
 })
