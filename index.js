@@ -5,7 +5,6 @@ const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const figlet = require('figlet');
 const request = require('request');
-const FFMPEG = require ('FFMPEG');
 const moment = require('moment');
 const r1 = require('snekfetch'); 
 const fs = require('fs');
